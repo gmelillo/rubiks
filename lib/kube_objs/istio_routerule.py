@@ -37,8 +37,9 @@ class IstioRouteRule(KubeObj):
             spec['destination'] = ret['destination']
         if 'precedence' in ret:
             spec['precedence'] = ret['precedence']
-        spec['route'] = [{'labels': {'version': ret['version']}}]
+        if 'version' in ret:
+            spec['route'] = [{'labels': {'version': ret['version']}}]
 
         return {'metadata': {'name': ret['name']},
                 'spec': spec,
-        }
+                }
