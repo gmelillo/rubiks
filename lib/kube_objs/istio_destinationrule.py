@@ -43,7 +43,7 @@ class IstioSubset(KubeSubObj):
         return self.renderer(order=('name', 'trafficPolicy', 'labels'))
 
 
-class IstioSpecs(KubeSubObj):
+class IstioDestinationRuleSpecs(KubeSubObj):
     _defaults = {
         'host': '',
         'trafficPolicy': None,
@@ -68,11 +68,11 @@ class IstioDestinationRule(KubeObj):
     _uses_namespace = True
 
     _defaults = {
-        'spec': IstioSpecs()
+        'spec': IstioDestinationRuleSpecs()
     }
 
     _types = {
-        'spec': Nullable(IstioSpecs)
+        'spec': Nullable(IstioDestinationRuleSpecs)
     }
 
     _parse_default_base = ('spec',)
