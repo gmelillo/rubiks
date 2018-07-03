@@ -17,13 +17,16 @@ def _loader():
 
     this = sys.modules[Dummy.__module__]
     basedir = os.path.split(this.__file__)[0]
+
     for dent in sorted(os.listdir(basedir)):
         if not dent.endswith('.py'):
             continue
         if dent == '__init__.py':
             # ourself
             continue
-        importlib.import_module('..' + dent[:-3], package='{}.__init__'.format(Dummy.__module__))
+        importlib.import_module(
+            '..' + dent[:-3], package='{}.__init__'.format(Dummy.__module__)
+        )
 
         # import types (classes) into our namespace
         for k in this.__dict__[dent[:-3]].__dict__:
