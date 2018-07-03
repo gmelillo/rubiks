@@ -1,4 +1,4 @@
-# (c) Copyright 2017-2018 OLX
+# (c) Copyright 2018-2019 OLX
 
 from __future__ import absolute_import
 from __future__ import division
@@ -7,15 +7,20 @@ from __future__ import unicode_literals
 
 from kube_obj import KubeObj, KubeSubObj
 from kube_types import Nullable, Map, String, List
+from .istio_loadbalancer import IstioLoadBalancer
 
 
 class IstioTrafficPolicy(KubeSubObj):
-    _defaults = {}
+    _defaults = {
+        'loadBalancer': None
+    }
 
-    _types = {}
+    _types = {
+        'loadBalancer': Nullable(IstioLoadBalancer)
+    }
 
     def render(self):
-        return self.render()
+        return self.renderer()
 
 
 class IstioSubset(KubeSubObj):
@@ -27,8 +32,8 @@ class IstioSubset(KubeSubObj):
 
     _types = {
         'name': Nullable(String),
+        'trafficPolicy': Nullable(IstioTrafficPolicy),
         'labels': Nullable(Map(String, String)),
-        'trafficPolicy': Nullable(String),
     }
 
     def render(self):
@@ -44,12 +49,12 @@ class IstioSpecs(KubeSubObj):
 
     _types = {
         'host': String,
-        'trafficPolicy': Nullable(String),
+        'trafficPolicy': Nullable(IstioTrafficPolicy),
         'subsets': Nullable(List(IstioSubset)),
         }
 
     def render(self):
-        return self.renderer()
+        return self.renderer(order=('host', 'trafficPolicy', 'subsets'))
 
 
 class IstioDestinationRule(KubeObj):
