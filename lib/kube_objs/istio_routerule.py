@@ -6,11 +6,11 @@ from __future__ import print_function
 from __future__ import unicode_literals
 
 from collections import OrderedDict
-from kube_obj import KubeObj, KubeSubObj
+from kube_obj import KubeObj
 from kube_types import *
 
 
-class RouteRule(KubeObj):
+class IstioRouteRule(KubeObj):
     apiVersion = 'config.istio.io/v1alpha2'
     kind = 'RouteRule'
     kubectltype = 'istiorouterule'
@@ -37,8 +37,9 @@ class RouteRule(KubeObj):
             spec['destination'] = ret['destination']
         if 'precedence' in ret:
             spec['precedence'] = ret['precedence']
-        spec['route'] = [{'labels': {'version': ret['version']}}]
+        if 'version' in ret:
+            spec['route'] = [{'labels': {'version': ret['version']}}]
 
         return {'metadata': {'name': ret['name']},
                 'spec': spec,
-        }
+                }
