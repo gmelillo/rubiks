@@ -6,20 +6,152 @@ from __future__ import print_function
 from __future__ import unicode_literals
 
 from kube_obj import KubeObj, KubeSubObj
-from kube_types import Nullable, Map, String, List
+from kube_types import Nullable, Map, String, List, Integer, Enum
 from .istio_loadbalancer import IstioLoadBalancer
 from .istio_connectionpool import IstioConnectionPool
+from .istio_http import IstioPortSelector
+
+
+class OutlierDetectionHTTPSettings(KubeSubObj):
+    _defaults = {
+        'consecutiveErrors': None,
+        'interval': None,
+        'baseEjectionTime': None,
+        'maxEjectionPercent': None,
+    }
+
+    _types = {
+        'consecutiveErrors': Nullable(Integer),
+        'interval': Nullable(String),
+        'baseEjectionTime': Nullable(String),
+        'maxEjectionPercent': Nullable(Integer),
+    }
+
+    def render(self):
+        return self.renderer()
+
+
+class IstioOutlierDetection(KubeSubObj):
+    _defaults = {
+        'http': None
+    }
+
+    _types = {
+        'http': Nullable(OutlierDetectionHTTPSettings)
+    }
+
+    def render(self):
+        return self.renderer()
+
+
+class IstioTLSSettings(KubeSubObj):
+    _defaults = {
+        'mode': None,
+        'clientCertificate': None,
+        'privateKey': None,
+        'caCertificates': None,
+        'subjectAltNames': None,
+        'sni': None
+    }
+
+    _types = {
+        'mode': Nullable(Enum('DISABLE', 'SIMPLE', 'MUTUAL', 'ISTIO_MUTUAL')),
+        'clientCertificate': Nullable(String),
+        'privateKey': Nullable(String),
+        'caCertificates': Nullable(String),
+        'subjectAltNames': Nullable(List(String)),
+        'sni': Nullable(String)
+    }
+
+    def render(self):
+        return self.renderer()
+
+
+class IstioConnectionPoolSettingsTCPSettings(KubeSubObj):
+    _defaults = {
+        'maxConnections': None,
+        'connectTimeout': None
+    }
+
+    _types = {
+        'maxConnections': Nullable(String),
+        'connectTimeout': Nullable(String)
+    }
+
+    def render(self):
+        return self.renderer()
+
+
+class IstioConnectionPoolSettingsHTTPSettings(KubeSubObj):
+    _defaults = {
+        'http1MaxPendingRequests': None,
+        'http2MaxRequests': None,
+        'maxRequestsPerConnection': None,
+        'maxRetries': None
+    }
+
+    _types = {
+        'http1MaxPendingRequests': Nullable(Integer),
+        'http2MaxRequests': Nullable(Integer),
+        'maxRequestsPerConnection': Nullable(Integer),
+        'maxRetries': Nullable(Integer)
+    }
+
+    def render(self):
+        return self.renderer()
+
+
+class IstioConnectionPoolSettings(KubeSubObj):
+    _defaults = {
+        'tcp': None,
+        'http': None
+    }
+
+    _types = {
+        'tcp': Nullable(IstioConnectionPoolSettingsTCPSettings),
+        'http': Nullable(IstioConnectionPoolSettingsHTTPSettings)
+    }
+
+    def render(self):
+        return self.renderer()
+
+
+class IstioPortTrafficPolicy(KubeSubObj):
+    _defaults = {
+        'port': None,
+        'loadBalancer': None,
+        'connectionPool': None,
+        'outlierDetection': None,
+        'tls': None
+    }
+
+    _types = {
+        'port': Nullable(IstioPortSelector),
+        'loadBalancer': Nullable(IstioLoadBalancer),
+        'connectionPool': Nullable(IstioConnectionPoolSettings),
+        'outlierDetection': Nullable(IstioOutlierDetection),
+        'tls': Nullable(IstioTLSSettings)
+    }
+
+    def render(self):
+        return self.renderer()
 
 
 class IstioTrafficPolicy(KubeSubObj):
     _defaults = {
         'loadBalancer': None,
-        'connectionPool': None
+        'connectionPool': None,
+        'outlierDetection': None,
+        'tls': None,
+        'portLevelSettings': None
     }
 
     _types = {
         'loadBalancer': Nullable(IstioLoadBalancer),
-        'connectionPool': Nullable(IstioConnectionPool)
+        'connectionPool': Nullable(IstioConnectionPool),
+        'outlierDetection': Nullable(IstioOutlierDetection),
+        'tls': Nullable(IstioTLSSettings),
+        'portLevelSettings': Nullable(IstioPortTrafficPolicy)
     }
 
     def render(self):
@@ -29,7 +161,7 @@ class IstioTrafficPolicy(KubeSubObj):
 class IstioSubset(KubeSubObj):
     _defaults = {
         'name': None,
-        'labels': {},
+        'labels': None,
         'trafficPolicy': None,
     }
 
@@ -45,7 +177,7 @@ class IstioSubset(KubeSubObj):
 
 class IstioDestinationRuleSpecs(KubeSubObj):
     _defaults = {
-        'host': '',
+        'host': None,
         'trafficPolicy': None,
         'subsets': [],
         }
