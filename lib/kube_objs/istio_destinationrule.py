@@ -8,15 +8,18 @@ from __future__ import unicode_literals
 from kube_obj import KubeObj, KubeSubObj
 from kube_types import Nullable, Map, String, List
 from .istio_loadbalancer import IstioLoadBalancer
+from .istio_connectionpool import IstioConnectionPool
 
 
 class IstioTrafficPolicy(KubeSubObj):
     _defaults = {
-        'loadBalancer': None
+        'loadBalancer': None,
+        'connectionPool': None
     }
 
     _types = {
-        'loadBalancer': Nullable(IstioLoadBalancer)
+        'loadBalancer': Nullable(IstioLoadBalancer),
+        'connectionPool': Nullable(IstioConnectionPool)
     }
 
     def render(self):
