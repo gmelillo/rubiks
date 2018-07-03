@@ -6,7 +6,8 @@ from __future__ import print_function
 from __future__ import unicode_literals
 
 from kube_obj import KubeObj, KubeSubObj
-from kube_types import Nullable, String, List, Domain, Positive, Integer, Map, Boolean
+from kube_types import Nullable, String, List, Domain, Positive, Integer, Map, Boolean, Enum
+from .istio_serviceentries import IstioPort
 
 
 class IstioHTTPFaultInjectionAbort(KubeSubObj):
@@ -241,6 +242,43 @@ class IstioHTTPRoute(KubeSubObj):
         'mirror': Nullable(IstioDestination),
         'corsPolicy': Nullable(IstioCorsPolicy),
         'appendHeaders': Nullable(Map(String, String))
+    }
+
+    def render(self):
+        return self.renderer()
+
+
+class IstioServerTLSOptions(KubeSubObj):
+    _defaults = {
+        'httpsRedirect': None,
+        'mode': None,
+        'serverCertificate': None,
+        'privateKey': None,
+        'caCertificates': None,
+        'subjectAltNames': None
+    }
+
+    _types = {
+        'httpsRedirect': Nullable(Boolean),
+        'mode': Nullable(Enum('PASSTHROUGH', 'SIMPLE', 'MUTUAL')),
+        'serverCertificate': Nullable(String),
+        'privateKey': Nullable(String),
+        'caCertificates': Nullable(String),
+        'subjectAltNames': Nullable(List(String))
+    }
+
+
+class IstioServer(KubeSubObj):
+    _defaults = {
+        'port': None,
+        'hosts': None,
+        'tls': None
+    }
+
+    _types = {
+        'port': Nullable(IstioPort),
+        'hosts': Nullable(List(Domain)),
+        'tls': Nullable(IstioServerTLSOptions)
     }
 
     def render(self):
