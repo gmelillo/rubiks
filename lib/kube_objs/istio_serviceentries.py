@@ -6,7 +6,7 @@ from __future__ import print_function
 from __future__ import unicode_literals
 
 from kube_obj import KubeObj, KubeSubObj
-from kube_types import Nullable, Map, String, List, Integer, Domain
+from kube_types import Nullable, String, List, Integer, Domain
 
 
 class IstioPort(KubeSubObj):
