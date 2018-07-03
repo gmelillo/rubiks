@@ -10,7 +10,7 @@ from kube_obj import KubeObj, KubeSubObj
 from kube_types import *
 
 
-class RouteRule(KubeObj):
+class IstioRouteRule(KubeObj):
     apiVersion = 'config.istio.io/v1alpha2'
     kind = 'RouteRule'
     kubectltype = 'istiorouterule'
