@@ -7,7 +7,7 @@ from __future__ import unicode_literals
 
 from collections import OrderedDict
 from kube_obj import KubeObj, KubeSubObj
-from kube_types import *
+from kube_types import String, Nullable, Map, List
 from .istio_http import IstioServer
 
 
