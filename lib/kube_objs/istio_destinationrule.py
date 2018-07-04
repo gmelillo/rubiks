@@ -12,7 +12,7 @@ from .istio_connectionpool import IstioConnectionPool
 from .istio_http import IstioPortSelector
 
 
-class OutlierDetectionHTTPSettings(KubeSubObj):
+class IstioOutlierDetectionHTTPSettings(KubeSubObj):
     _defaults = {
         'consecutiveErrors': None,
         'interval': None,
@@ -37,7 +37,7 @@ class IstioOutlierDetection(KubeSubObj):
     }
 
     _types = {
-        'http': Nullable(OutlierDetectionHTTPSettings)
+        'http': Nullable(IstioOutlierDetectionHTTPSettings)
     }
 
     def render(self):
