@@ -9,8 +9,10 @@ import copy
 import traceback
 import sys
 from collections import OrderedDict
+from kube_help import KubeHelper
 
-from kube_types import *
+from kube_types import Integer, Positive, NonZero, Number, Boolean
+from kube_types import String, Map, List, Identifier, NonEmpty, KubeType
 from user_error import UserError, paths as user_error_paths
 
 
@@ -49,7 +51,7 @@ class KubeObjParseError(Exception):
         self.doc = input_doc
 
     def __repr__(self):
-        return '{}(obj={}, doc={})'.format(self.__class__.__name__, self.obj.__name__, repr(doc))
+        return '{}(obj={}, doc={})'.format(self.__class__.__name__, self.obj.__name__, repr(self.doc))
 
 
 class KubeTypeUnresolvable(Exception):
@@ -74,6 +76,7 @@ class KubeBaseObj(object):
     has_metadata = False
     _is_openshift = False
     _always_regenerate = False
+    _document_url = None
 
     def __init__(self, *args, **kwargs):
         # put the identifier in if it's specified
@@ -237,7 +240,7 @@ class KubeBaseObj(object):
                         tk = basic_validation(kk)
                         tv = basic_validation(vv)
                         if tk is not None and tv is not None:
-                            types[k] = NonEmpty(Dict(tk, tv))
+                            types[k] = NonEmpty(dict(tk, tv))
 
                 if not isinstance(types[k], KubeType):
                     raise KubeTypeUnresolvable(
@@ -304,6 +307,12 @@ class KubeBaseObj(object):
 
     @classmethod
     def get_help(cls):
+        ret_help = KubeHelper(
+            name=cls.__name__,
+            document=cls.__class__.__doc__,
+            documentlink=cls._document_url
+            )
+
         def _rec_superclasses(kls):
             ret = []
             superclasses = list(filter(lambda x: x is not KubeBaseObj and x is not KubeSubObj and
@@ -317,58 +326,27 @@ class KubeBaseObj(object):
 
             return ret
 
-        subclasses = list(map(lambda x: x.__name__, cls.get_subclasses(non_abstract=False, include_self=False)))
-        superclasses = list(map(lambda x: x.__name__, _rec_superclasses(cls)))
+        ret_help._class_subclasses = list(map(lambda x: x.__name__, cls.get_subclasses(non_abstract=False, include_self=False)))
+        ret_help._class_superclasses = list(map(lambda x: x.__name__, _rec_superclasses(cls)))
 
-        types = cls.resolve_types()
+        ret_help._class_types = cls.resolve_types()
 
-        abstract = ''
-        if cls.is_abstract_type():
-            abstract = ' (abstract type)'
-
-        identifier = None
-        if hasattr(cls, 'identifier') and cls.identifier is not None:
-            identifier = cls.identifier
-
-        txt = '{}{}:\n'.format(cls.__name__, abstract)
-        if len(superclasses) != 0:
-            txt += '  parents: {}\n'.format(', '.join(superclasses))
-        if len(subclasses) != 0:
-            txt += '  children: {}\n'.format(', '.join(subclasses))
-        if len(cls._parent_types) != 0:
-            txt += '  parent types: {}\n'.format(', '.join(sorted(cls._parent_types.keys())))
-        if cls.has_metadata:
-            txt += '  metadata:\n'
-            txt += '    annotations:          {}\n'.format(Map(String, String).name())
-            txt += '    labels:               {}\n'.format(Map(String, String).name())
-        txt += '  properties:\n'
-        if identifier is not None:
-            spc = ''
-            if len(identifier) < 7:
-                spc = (7 - len(identifier)) * ' '
-            txt += '    {} (identifier): {}{}\n'.format(identifier, spc, types[identifier].name())
+        ret_help._class_is_abstract = '' if cls.is_abstract_type() else ' (abstract type)'
+        ret_help._class_identifier = cls.identifier if hasattr(cls, 'identifier') and cls.identifier is not None else None
 
         mapping = cls._find_defaults('_map')
-        rmapping = {}
+        ret_help._class_mapping = {}
         for d in mapping:
-            if mapping[d] not in rmapping:
-                rmapping[mapping[d]] = []
-            rmapping[mapping[d]].append(d)
+            if mapping[d] not in ret_help._class_mapping:
+                ret_help._class_mapping[mapping[d]] = []
+            ret_help._class_mapping[mapping[d]].append(d)
 
-        for p in sorted(types.keys()):
-            if p == identifier:
-                continue
-            spc = ''
-            if len(p) < 20:
-                spc = (20 - len(p)) * ' '
-            if hasattr(cls, 'xf_{}'.format(p)):
-                xf = '*'
-            else:
-                xf = ' '
-            txt += '   {}{}: {}{}\n'.format(xf, p, spc, types[p].name())
-            if p in rmapping:
-                txt += '      ({})\n'.format(', '.join(rmapping[p]))
-        return txt
+        ret_help._class_parent_types = cls._parent_types
+        ret_help._class_has_metadata = cls.has_metadata
+
+        ret_help._class_xf_hasattr = ['xf_{}'.format(p) for p in sorted(ret_help._class_types.keys()) if hasattr(cls, 'xf_{}'.format(p))]
+
+        return ret_help
 
     def has_child_object(self, obj):
         assert isinstance(obj, KubeBaseObj)
