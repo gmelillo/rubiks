@@ -282,4 +282,4 @@ class IstioServer(KubeSubObj):
     }
 
     def render(self):
-        return self.renderer()
+        return self.renderer(order=('port', 'hosts', 'tls'))
