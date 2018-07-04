@@ -5,8 +5,9 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
-from kube_obj import KubeObj, KubeSubObj
-from kube_types import Nullable, String, List, Domain, Positive, Integer, Map, Boolean, Enum
+from kube_obj import KubeSubObj
+from kube_types import Nullable, String, List, Domain, Positive
+from kube_types import Integer, Map, Boolean, Enum
 from .istio_serviceentries import IstioPort
 
 

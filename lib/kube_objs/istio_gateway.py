@@ -47,7 +47,6 @@ class IstioGateway(KubeObj):
     def render(self):
         ret = self.renderer(return_none=True)
         spec = OrderedDict()
-        print(ret)
         if 'selector' in ret:
             spec['selector'] = ret['selector']
 
