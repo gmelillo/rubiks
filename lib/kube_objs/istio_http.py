@@ -267,6 +267,9 @@ class IstioServerTLSOptions(KubeSubObj):
         'subjectAltNames': Nullable(List(String))
     }
 
+    def render(self):
+        return self.renderer()
+
 
 class IstioServer(KubeSubObj):
     _defaults = {
