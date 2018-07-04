@@ -33,7 +33,7 @@ class KubeHelper(object):
 
     def render_terminal(self):
         txt = '{}{}:\n'.format(self._class_name, self._class_is_abstract)
-        
+
         if len(self._class_superclasses) != 0:
             txt += '  parents: {}\n'.format(', '.join(self._class_superclasses))
         if len(self._class_subclasses) != 0:
@@ -66,4 +66,14 @@ class KubeHelper(object):
         return txt
 
     def render_markdown(self):
-        pass
+        description = '```\n{}\n```'.format(self.render_terminal())
+        
+        title = '## {}\n'.format(self._class_name)
+        if self._class_doc_link is not None:
+            title = '## [{}]({})\n'.format(self._class_name, self._class_doc_link) 
+
+        if self._class_doc is not None:
+            return '{}\n{}\n\n{}\n'.format(title, self._class_doc, description)
+        else:
+            return '{}\n{}\n'.format(title, description)
+        

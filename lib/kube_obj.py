@@ -309,7 +309,7 @@ class KubeBaseObj(object):
     def get_help(cls):
         ret_help = KubeHelper(
             name=cls.__name__,
-            document=cls.__class__.__doc__,
+            document=cls.__doc__,
             documentlink=cls._document_url
             )
 
