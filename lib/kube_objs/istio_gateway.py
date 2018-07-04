@@ -1,4 +1,4 @@
-# (c) Copyright 2018-2011 OLX
+# (c) Copyright 2018-2019 OLX
 
 from __future__ import absolute_import
 from __future__ import division
@@ -8,50 +8,49 @@ from __future__ import unicode_literals
 from collections import OrderedDict
 from kube_obj import KubeObj, KubeSubObj
 from kube_types import *
+from .istio_http import IstioServer
 
-class IstioGatewaySelector(KubeSubObj):
+
+class IstioGatewaySpec(KubeSubObj):
     _defaults = {
-        'app': None,
-        }
+        'selector': {},
+        'servers': IstioServer(),
+    }
 
     _types = {
-        'app': Nullable(String),
-        }
-    
+        'selector': Nullable(Map(String, String)),
+        'servers': List(IstioServer),
+    }
+
     def render(self):
         return self.renderer()
+
 
 class IstioGateway(KubeObj):
     apiVersion = 'networking.istio.io/v1alpha3'
     kind = 'Gateway'
-    kubectltype = 'istiorouterule'
-    #selector = IstioGatewaySelector()
+    kubectltype = 'istiogateway'
 
     _uses_namespace = False
     _output_order = 200
-    
+
     _defaults = {
-        'selector': IstioGatewaySelector(),
+        'name': None,
+        'spec': IstioGatewaySpec(),
     }
 
     _types = {
-        'selector': IstioGatewaySelector,
+        'name': String,
+        'spec': IstioGatewaySpec,
     }
 
     def render(self):
         ret = self.renderer(return_none=True)
         spec = OrderedDict()
-
-        print (ret)
-        print (spec)
-
+        print(ret)
         if 'selector' in ret:
             spec['selector'] = ret['selector']
-#        if 'servers' in ret:
-#            spec['servers'] = [ret['servers']]
-#        if 'version' in ret:
-#            spec['route'] = [{'labels': {'version': ret['version']}}]
 
         return {'metadata': {'name': ret['name']},
-                'spec': spec,
+                'spec': ret['spec'],
                 }
