@@ -87,9 +87,17 @@ class ReplicationController(KubeObj):
 
 
 class Deployment(KubeObj):
+    """
+    A Deployment controller provides declarative updates for Pods and ReplicaSets.
+
+    You describe a desired state in a Deployment object, and the Deployment controller changes the actual state to the desired state at a controlled rate.
+    You can define Deployments to create new ReplicaSets, or to remove existing Deployments and adopt all their resources with new Deployments.
+    """
+
     apiVersion = 'extensions/v1beta1'
     kind = 'Deployment'
     kubectltype = 'deployment'
+    _document_url = 'https://kubernetes.io/docs/concepts/workloads/controllers/deployment/'
 
     _defaults = {
         'minReadySeconds': None,
