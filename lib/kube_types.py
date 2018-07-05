@@ -126,7 +126,12 @@ class Enum(KubeType):
         self.enums = args
 
     def name(self):
-        return '{}({})'.format(self.__class__.__name__, ', '.join(map(repr, self.enums)))
+        def fake_repr(x):
+            ret = repr(x)
+            if ret.startswith("u'"):
+                return ret[1:]
+            return ret
+        return '{}({})'.format(self.__class__.__name__, ', '.join(map(fake_repr, self.enums)))
 
     def do_check(self, value, path):
         return value in self.enums

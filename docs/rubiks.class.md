@@ -8,13 +8,13 @@
 ```
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
 name | Identifier | True | False | - 
-secrets | Map<String, String> | False | False | - 
-tls_cert | String | False | False | - 
-tls_key | String | False | False | - 
-type | NonEmpty<String> | False | False | - 
+secrets | Map&lt;String, String&gt; | False | - | - 
+tls_cert | String | False | - | - 
+tls_key | String | False | - | - 
+type | NonEmpty&lt;String&gt; | False | - | - 
 ## Service
 ####  Children: 
 - [ClusterIPService](#clusteripservice)
@@ -26,12 +26,12 @@ type | NonEmpty<String> | False | False | -
 ```
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
 name | Identifier | True | False | - 
-ports | NonEmpty<List<ServicePort>> | False | True | - 
-selector | NonEmpty<Map<String, String>> | False | True | - 
-sessionAffinity | Nullable<Enum(u'ClientIP', u'None')> | False | False | - 
+ports | NonEmpty&lt;List&lt;[ServicePort](#serviceport)&gt;&gt; | False | &lt;unknown transformation&gt; | - 
+selector | NonEmpty&lt;Map&lt;String, String&gt;&gt; | False | &lt;unknown transformation&gt; | - 
+sessionAffinity | Nullable&lt;Enum('ClientIP', 'None')&gt; | False | - | - 
 ## DockerCredentials
 #### Parents: 
 - [Secret](#secret)
@@ -42,22 +42,18 @@ sessionAffinity | Nullable<Enum(u'ClientIP', u'None')> | False | False | -
 ```
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
 name | Identifier | True | False | - 
-dockers | Map<String, Map<String, String>> | False | False | - 
-secrets | Map<String, String> | False | False | - 
-type | NonEmpty<String> | False | False | - 
+dockers | Map&lt;String, Map&lt;String, String&gt;&gt; | False | - | - 
+secrets | Map&lt;String, String&gt; | False | - | - 
+type | NonEmpty&lt;String&gt; | False | - | - 
 ## DplBaseUpdateStrategy
 ####  Children: 
 - [DplRecreateStrategy](#dplrecreatestrategy)
 - [DplRollingUpdateStrategy](#dplrollingupdatestrategy)
 ####  Parent types: 
 - [Deployment](#deployment)
-####  Properties:
-
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
 ## Role
 #### Parents: 
 - [RoleBase](#rolebase)
@@ -68,10 +64,10 @@ Name | Type | Identifier | Abstract | Mapping
 ```
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
 name | Identifier | True | False | - 
-rules | NonEmpty<List<PolicyRule>> | False | False | - 
+rules | NonEmpty&lt;List&lt;[PolicyRule](#policyrule)&gt;&gt; | False | - | - 
 ## Group
 #### Metadata
 ```
@@ -80,34 +76,34 @@ rules | NonEmpty<List<PolicyRule>> | False | False | -
 ```
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
 name | Identifier | True | False | - 
-users | NonEmpty<List<UserIdentifier>> | False | False | - 
+users | NonEmpty&lt;List&lt;UserIdentifier&gt;&gt; | False | - | - 
 ## RouteTLS
 ####  Parent types: 
 - [Route](#route)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-caCertificate | Nullable<NonEmpty<String>> | False | False | - 
-certificate | Nullable<NonEmpty<String>> | False | False | - 
-destinationCACertificate | Nullable<NonEmpty<String>> | False | False | - 
-insecureEdgeTerminationPolicy | Enum(u'Allow', u'Disable', u'Redirect') | False | False | - 
-key | Nullable<NonEmpty<String>> | False | False | - 
-termination | Enum(u'edge', u'reencrypt', u'passthrough') | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+caCertificate | Nullable&lt;NonEmpty&lt;String&gt;&gt; | False | - | - 
+certificate | Nullable&lt;NonEmpty&lt;String&gt;&gt; | False | - | - 
+destinationCACertificate | Nullable&lt;NonEmpty&lt;String&gt;&gt; | False | - | - 
+insecureEdgeTerminationPolicy | Enum('Allow', 'Disable', 'Redirect') | False | - | - 
+key | Nullable&lt;NonEmpty&lt;String&gt;&gt; | False | - | - 
+termination | Enum('edge', 'reencrypt', 'passthrough') | False | - | - 
 ## SCCRunAsUser
 ####  Parent types: 
 - [SecurityContextConstraints](#securitycontextconstraints)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-type | Enum(u'MustRunAs', u'RunAsAny', u'MustRunAsRange', u'MustRunAsNonRoot') | False | False | - 
-uid | Nullable<Positive<NonZero<Integer>>> | False | False | - 
-uidRangeMax | Nullable<Positive<NonZero<Integer>>> | False | False | - 
-uidRangeMin | Nullable<Positive<NonZero<Integer>>> | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+type | Enum('MustRunAs', 'RunAsAny', 'MustRunAsRange', 'MustRunAsNonRoot') | False | - | - 
+uid | Nullable&lt;Positive&lt;NonZero&lt;Integer&gt;&gt;&gt; | False | - | - 
+uidRangeMax | Nullable&lt;Positive&lt;NonZero&lt;Integer&gt;&gt;&gt; | False | - | - 
+uidRangeMin | Nullable&lt;Positive&lt;NonZero&lt;Integer&gt;&gt;&gt; | False | - | - 
 ## PersistentVolumeClaim
 #### Metadata
 ```
@@ -116,13 +112,13 @@ uidRangeMin | Nullable<Positive<NonZero<Integer>>> | False | False | -
 ```
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
 name | Identifier | True | False | - 
-accessModes | List<Enum(u'ReadWriteOnce', u'ReadOnlyMany', u'ReadWriteMany')> | False | False | - 
-request | Memory | False | False | - 
-selector | Nullable<BaseSelector> | False | False | - 
-volumeName | Nullable<Identifier> | False | True | - 
+accessModes | List&lt;Enum('ReadWriteOnce', 'ReadOnlyMany', 'ReadWriteMany')&gt; | False | - | - 
+request | Memory | False | - | - 
+selector | Nullable&lt;[BaseSelector](#baseselector)&gt; | False | - | - 
+volumeName | Nullable&lt;Identifier&gt; | False | &lt;unknown transformation&gt; | - 
 ## PodVolumePVCSpec
 #### Parents: 
 - [PodVolumeBaseSpec](#podvolumebasespec)
@@ -130,32 +126,28 @@ volumeName | Nullable<Identifier> | False | True | -
 - [PodTemplateSpec](#podtemplatespec)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-claimName | Identifier | False | False | - 
-name | Identifier | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+claimName | Identifier | False | - | - 
+name | Identifier | False | - | - 
 ## DCConfigChangeTrigger
 #### Parents: 
 - [DCTrigger](#dctrigger)
 ####  Parent types: 
 - [DeploymentConfig](#deploymentconfig)
-####  Properties:
-
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
 ## SecurityContext
 ####  Parent types: 
 - [ContainerSpec](#containerspec)
 - [PodTemplateSpec](#podtemplatespec)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-fsGroup | Nullable<Integer> | False | False | - 
-privileged | Nullable<Boolean> | False | False | - 
-runAsNonRoot | Nullable<Boolean> | False | False | - 
-runAsUser | Nullable<Integer> | False | False | - 
-supplementalGroups | Nullable<List<Integer>> | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+fsGroup | Nullable&lt;Integer&gt; | False | - | - 
+privileged | Nullable&lt;Boolean&gt; | False | - | - 
+runAsNonRoot | Nullable&lt;Boolean&gt; | False | - | - 
+runAsUser | Nullable&lt;Integer&gt; | False | - | - 
+supplementalGroups | Nullable&lt;List&lt;Integer&gt;&gt; | False | - | - 
 ## Project
 #### Parents: 
 - [Namespace](#namespace)
@@ -166,8 +158,8 @@ supplementalGroups | Nullable<List<Integer>> | False | False | -
 ```
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
 name | Identifier | True | False | - 
 ## PersistentVolume
 #### Metadata
@@ -177,14 +169,14 @@ name | Identifier | True | False | -
 ```
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
 name | Identifier | True | False | - 
-accessModes | List<Enum(u'ReadWriteOnce', u'ReadOnlyMany', u'ReadWriteMany')> | False | False | - 
-awsElasticBlockStore | Nullable<AWSElasticBlockStore> | False | False | - 
-capacity | Memory | False | False | - 
-claimRef | Nullable<PersistentVolumeRef> | False | False | - 
-persistentVolumeReclaimPolicy | Nullable<Enum(u'Retain', u'Recycle', u'Delete')> | False | False | - 
+accessModes | List&lt;Enum('ReadWriteOnce', 'ReadOnlyMany', 'ReadWriteMany')&gt; | False | - | - 
+awsElasticBlockStore | Nullable&lt;[AWSElasticBlockStore](#awselasticblockstore)&gt; | False | - | - 
+capacity | Memory | False | - | - 
+claimRef | Nullable&lt;[PersistentVolumeRef](#persistentvolumeref)&gt; | False | - | - 
+persistentVolumeReclaimPolicy | Nullable&lt;Enum('Retain', 'Recycle', 'Delete')&gt; | False | - | - 
 ## DeploymentConfig
 #### Metadata
 ```
@@ -193,39 +185,35 @@ persistentVolumeReclaimPolicy | Nullable<Enum(u'Retain', u'Recycle', u'Delete')>
 ```
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
 name | Identifier | True | False | - 
-minReadySeconds | Nullable<Positive<NonZero<Integer>>> | False | False | - 
-paused | Nullable<Boolean> | False | False | - 
-pod_template | PodTemplateSpec | False | False | - 
-replicas | Positive<NonZero<Integer>> | False | False | - 
-revisionHistoryLimit | Nullable<Positive<NonZero<Integer>>> | False | False | - 
-selector | Nullable<Map<String, String>> | False | False | - 
-strategy | DCBaseUpdateStrategy | False | False | - 
-test | Boolean | False | False | - 
-triggers | List<DCTrigger> | False | False | - 
+minReadySeconds | Nullable&lt;Positive&lt;NonZero&lt;Integer&gt;&gt;&gt; | False | - | - 
+paused | Nullable&lt;Boolean&gt; | False | - | - 
+pod_template | [PodTemplateSpec](#podtemplatespec) | False | - | - 
+replicas | Positive&lt;NonZero&lt;Integer&gt;&gt; | False | - | - 
+revisionHistoryLimit | Nullable&lt;Positive&lt;NonZero&lt;Integer&gt;&gt;&gt; | False | - | - 
+selector | Nullable&lt;Map&lt;String, String&gt;&gt; | False | - | - 
+strategy | [DCBaseUpdateStrategy](#dcbaseupdatestrategy) | False | - | - 
+test | Boolean | False | - | - 
+triggers | List&lt;[DCTrigger](#dctrigger)&gt; | False | - | - 
 ## ContainerPort
 ####  Parent types: 
 - [ContainerSpec](#containerspec)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-containerPort | Positive<NonZero<Integer>> | False | False | - 
-hostIP | Nullable<IP> | False | False | - 
-hostPort | Nullable<Positive<NonZero<Integer>>> | False | False | - 
-name | Nullable<String> | False | False | - 
-protocol | Enum(u'TCP', u'UDP') | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+containerPort | Positive&lt;NonZero&lt;Integer&gt;&gt; | False | - | - 
+hostIP | Nullable&lt;IP&gt; | False | - | - 
+hostPort | Nullable&lt;Positive&lt;NonZero&lt;Integer&gt;&gt;&gt; | False | - | - 
+name | Nullable&lt;String&gt; | False | - | - 
+protocol | Enum('TCP', 'UDP') | False | - | - 
 ## DCImageChangeTrigger
 #### Parents: 
 - [DCTrigger](#dctrigger)
 ####  Parent types: 
 - [DeploymentConfig](#deploymentconfig)
-####  Properties:
-
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
 ## RoleRef
 ####  Parent types: 
 - [ClusterRoleBinding](#clusterrolebinding)
@@ -234,10 +222,10 @@ Name | Type | Identifier | Abstract | Mapping
 - [RoleBindingBase](#rolebindingbase)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-name | Nullable<SystemIdentifier> | False | False | - 
-ns | Nullable<Identifier> | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+name | Nullable&lt;SystemIdentifier&gt; | False | - | - 
+ns | Nullable&lt;Identifier&gt; | False | - | - 
 ## LifeCycleHTTP
 #### Parents: 
 - [LifeCycleProbe](#lifecycleprobe)
@@ -245,11 +233,11 @@ ns | Nullable<Identifier> | False | False | -
 - [LifeCycle](#lifecycle)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-path | NonEmpty<Path> | False | False | - 
-port | Positive<NonZero<Integer>> | False | False | - 
-scheme | Nullable<Enum(u'HTTP', u'HTTPS')> | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+path | NonEmpty&lt;Path&gt; | False | - | - 
+port | Positive&lt;NonZero&lt;Integer&gt;&gt; | False | - | - 
+scheme | Nullable&lt;Enum('HTTP', 'HTTPS')&gt; | False | - | - 
 ## PodVolumeItemMapper
 #### Parents: 
 - [PodVolumeBaseSpec](#podvolumebasespec)
@@ -260,10 +248,10 @@ scheme | Nullable<Enum(u'HTTP', u'HTTPS')> | False | False | -
 - [PodTemplateSpec](#podtemplatespec)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-item_map | Nullable<Map<String, String>> | False | False | - 
-name | Identifier | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+item_map | Nullable&lt;Map&lt;String, String&gt;&gt; | False | - | - 
+name | Identifier | False | - | - 
 ## DaemonSet
 #### Parents: 
 - [SelectorsPreProcessMixin](#selectorspreprocessmixin)
@@ -274,11 +262,11 @@ name | Identifier | False | False | -
 ```
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
 name | Identifier | True | False | - 
-pod_template | PodTemplateSpec | False | False | - 
-selector | Nullable<BaseSelector> | False | True | - 
+pod_template | [PodTemplateSpec](#podtemplatespec) | False | - | - 
+selector | Nullable&lt;[BaseSelector](#baseselector)&gt; | False | &lt;unknown transformation&gt; | - 
 ## DCBaseUpdateStrategy
 ####  Children: 
 - [DCRecreateStrategy](#dcrecreatestrategy)
@@ -288,12 +276,12 @@ selector | Nullable<BaseSelector> | False | True | -
 - [DeploymentConfig](#deploymentconfig)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-activeDeadlineSeconds | Nullable<Positive<NonZero<Integer>>> | False | False | - 
-annotations | Map<String, String> | False | False | - 
-labels | Map<String, String> | False | False | - 
-resources | Nullable<ContainerResourceSpec> | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+activeDeadlineSeconds | Nullable&lt;Positive&lt;NonZero&lt;Integer&gt;&gt;&gt; | False | - | - 
+annotations | Map&lt;String, String&gt; | False | - | - 
+labels | Map&lt;String, String&gt; | False | - | - 
+resources | Nullable&lt;[ContainerResourceSpec](#containerresourcespec)&gt; | False | - | - 
 ## Namespace
 ####  Children: 
 - [Project](#project)
@@ -304,8 +292,8 @@ resources | Nullable<ContainerResourceSpec> | False | False | -
 ```
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
 name | Identifier | True | False | - 
 ## ContainerEnvSpec
 #### Parents: 
@@ -316,10 +304,10 @@ name | Identifier | True | False | -
 - [DCLifecycleNewPod](#dclifecyclenewpod)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-name | EnvString | False | False | - 
-value | String | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+name | EnvString | False | - | - 
+value | String | False | - | - 
 ## PodVolumeConfigMapSpec
 #### Parents: 
 - [PodVolumeItemMapper](#podvolumeitemmapper)
@@ -328,34 +316,34 @@ value | String | False | False | -
 - [PodTemplateSpec](#podtemplatespec)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-defaultMode | Nullable<Positive<Integer>> | False | False | - 
-item_map | Nullable<Map<String, String>> | False | False | - 
-map_name | Identifier | False | False | - 
-name | Identifier | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+defaultMode | Nullable&lt;Positive&lt;Integer&gt;&gt; | False | - | - 
+item_map | Nullable&lt;Map&lt;String, String&gt;&gt; | False | - | - 
+map_name | Identifier | False | - | - 
+name | Identifier | False | - | - 
 ## MatchExpression
 ####  Parent types: 
 - [MatchExpressionsSelector](#matchexpressionsselector)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-key | NonEmpty<String> | False | False | - 
-operator | Enum(u'In', u'NotIn', u'Exists', u'DoesNotExist') | False | False | - 
-values | Nullable<List<String>> | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+key | NonEmpty&lt;String&gt; | False | - | - 
+operator | Enum('In', 'NotIn', 'Exists', 'DoesNotExist') | False | - | - 
+values | Nullable&lt;List&lt;String&gt;&gt; | False | - | - 
 ## SCCSELinux
 ####  Parent types: 
 - [SecurityContextConstraints](#securitycontextconstraints)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-level | Nullable<String> | False | False | - 
-role | Nullable<String> | False | False | - 
-strategy | Nullable<Enum(u'MustRunAs', u'RunAsAny')> | False | False | - 
-type | Nullable<String> | False | False | - 
-user | Nullable<String> | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+level | Nullable&lt;String&gt; | False | - | - 
+role | Nullable&lt;String&gt; | False | - | - 
+strategy | Nullable&lt;Enum('MustRunAs', 'RunAsAny')&gt; | False | - | - 
+type | Nullable&lt;String&gt; | False | - | - 
+user | Nullable&lt;String&gt; | False | - | - 
 ## ClusterRoleBinding
 #### Parents: 
 - [RoleBindingBase](#rolebindingbase)
@@ -367,11 +355,11 @@ user | Nullable<String> | False | False | -
 ```
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
 name | Identifier | True | False | - 
-roleRef | RoleRef | False | True | - 
-subjects | NonEmpty<List<RoleSubject>> | False | True | - 
+roleRef | [RoleRef](#roleref) | False | &lt;unknown transformation&gt; | - 
+subjects | NonEmpty&lt;List&lt;[RoleSubject](#rolesubject)&gt;&gt; | False | &lt;unknown transformation&gt; | - 
 ## AWSLoadBalancerService
 #### Parents: 
 - [Service](#service)
@@ -382,15 +370,15 @@ subjects | NonEmpty<List<RoleSubject>> | False | True | -
 ```
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
 name | Identifier | True | False | - 
-aws-load-balancer-backend-protocol | Nullable<Identifier> | False | False | - 
-aws-load-balancer-ssl-cert | Nullable<ARN> | False | False | - 
-externalTrafficPolicy | Nullable<Enum(u'Cluster', u'Local')> | False | False | - 
-ports | NonEmpty<List<ServicePort>> | False | True | - 
-selector | NonEmpty<Map<String, String>> | False | True | - 
-sessionAffinity | Nullable<Enum(u'ClientIP', u'None')> | False | False | - 
+aws-load-balancer-backend-protocol | Nullable&lt;Identifier&gt; | False | - | - 
+aws-load-balancer-ssl-cert | Nullable&lt;ARN&gt; | False | - | - 
+externalTrafficPolicy | Nullable&lt;Enum('Cluster', 'Local')&gt; | False | - | - 
+ports | NonEmpty&lt;List&lt;[ServicePort](#serviceport)&gt;&gt; | False | &lt;unknown transformation&gt; | - 
+selector | NonEmpty&lt;Map&lt;String, String&gt;&gt; | False | &lt;unknown transformation&gt; | - 
+sessionAffinity | Nullable&lt;Enum('ClientIP', 'None')&gt; | False | - | - 
 ## Job
 #### Metadata
 ```
@@ -399,15 +387,15 @@ sessionAffinity | Nullable<Enum(u'ClientIP', u'None')> | False | False | -
 ```
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
 name | Identifier | True | False | - 
-activeDeadlineSeconds | Nullable<Positive<Integer>> | False | False | - 
-completions | Nullable<Positive<NonZero<Integer>>> | False | False | - 
-manualSelector | Nullable<Boolean> | False | False | - 
-parallelism | Nullable<Positive<NonZero<Integer>>> | False | False | - 
-pod_template | PodTemplateSpec | False | False | - 
-selector | Nullable<BaseSelector> | False | False | - 
+activeDeadlineSeconds | Nullable&lt;Positive&lt;Integer&gt;&gt; | False | - | - 
+completions | Nullable&lt;Positive&lt;NonZero&lt;Integer&gt;&gt;&gt; | False | - | - 
+manualSelector | Nullable&lt;Boolean&gt; | False | - | - 
+parallelism | Nullable&lt;Positive&lt;NonZero&lt;Integer&gt;&gt;&gt; | False | - | - 
+pod_template | [PodTemplateSpec](#podtemplatespec) | False | - | - 
+selector | Nullable&lt;[BaseSelector](#baseselector)&gt; | False | - | - 
 ## RouteDestService
 #### Parents: 
 - [RouteDest](#routedest)
@@ -415,10 +403,10 @@ selector | Nullable<BaseSelector> | False | False | -
 - [Route](#route)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-name | Identifier | False | False | - 
-weight | Positive<NonZero<Integer>> | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+name | Identifier | False | - | - 
+weight | Positive&lt;NonZero&lt;Integer&gt;&gt; | False | - | - 
 ## DCRecreateStrategy
 #### Parents: 
 - [DCBaseUpdateStrategy](#dcbaseupdatestrategy)
@@ -426,14 +414,14 @@ weight | Positive<NonZero<Integer>> | False | False | -
 - [DeploymentConfig](#deploymentconfig)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-activeDeadlineSeconds | Nullable<Positive<NonZero<Integer>>> | False | False | - 
-annotations | Map<String, String> | False | False | - 
-customParams | Nullable<DCCustomParams> | False | False | - 
-labels | Map<String, String> | False | False | - 
-recreateParams | Nullable<DCRecreateParams> | False | False | - 
-resources | Nullable<ContainerResourceSpec> | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+activeDeadlineSeconds | Nullable&lt;Positive&lt;NonZero&lt;Integer&gt;&gt;&gt; | False | - | - 
+annotations | Map&lt;String, String&gt; | False | - | - 
+customParams | Nullable&lt;[DCCustomParams](#dccustomparams)&gt; | False | - | - 
+labels | Map&lt;String, String&gt; | False | - | - 
+recreateParams | Nullable&lt;[DCRecreateParams](#dcrecreateparams)&gt; | False | - | - 
+resources | Nullable&lt;[ContainerResourceSpec](#containerresourcespec)&gt; | False | - | - 
 ## DplRollingUpdateStrategy
 #### Parents: 
 - [DplBaseUpdateStrategy](#dplbaseupdatestrategy)
@@ -441,10 +429,10 @@ resources | Nullable<ContainerResourceSpec> | False | False | -
 - [Deployment](#deployment)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-maxSurge | SurgeSpec | False | False | - 
-maxUnavailable | SurgeSpec | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+maxSurge | SurgeSpec | False | - | - 
+maxUnavailable | SurgeSpec | False | - | - 
 ## ContainerSpec
 #### Parents: 
 - [EnvironmentPreProcessMixin](#environmentpreprocessmixin)
@@ -452,42 +440,34 @@ maxUnavailable | SurgeSpec | False | False | -
 - [PodTemplateSpec](#podtemplatespec)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
 name | Identifier | True | False | - 
-args | Nullable<List<String>> | False | False | - 
-command | Nullable<List<String>> | False | False | - 
-env | Nullable<List<ContainerEnvBaseSpec>> | False | True | - 
-image | NonEmpty<String> | False | False | - 
-imagePullPolicy | Nullable<Enum(u'Always', u'IfNotPresent')> | False | False | - 
-kind | Nullable<Enum(u'DockerImage')> | False | False | - 
-lifecycle | Nullable<LifeCycle> | False | False | - 
-livenessProbe | Nullable<ContainerProbeBaseSpec> | False | False | - 
-ports | Nullable<List<ContainerPort>> | False | True | - 
-readinessProbe | Nullable<ContainerProbeBaseSpec> | False | False | - 
-resources | Nullable<ContainerResourceSpec> | False | False | - 
-securityContext | Nullable<SecurityContext> | False | False | - 
-terminationMessagePath | Nullable<NonEmpty<Path>> | False | False | - 
-volumeMounts | Nullable<List<ContainerVolumeMountSpec>> | False | True | - 
+args | Nullable&lt;List&lt;String&gt;&gt; | False | - | - 
+command | Nullable&lt;List&lt;String&gt;&gt; | False | - | - 
+env | Nullable&lt;List&lt;[ContainerEnvBaseSpec](#containerenvbasespec)&gt;&gt; | False | &lt;unknown transformation&gt; | - 
+image | NonEmpty&lt;String&gt; | False | - | - 
+imagePullPolicy | Nullable&lt;Enum('Always', 'IfNotPresent')&gt; | False | - | - 
+kind | Nullable&lt;Enum('DockerImage')&gt; | False | - | - 
+lifecycle | Nullable&lt;[LifeCycle](#lifecycle)&gt; | False | - | - 
+livenessProbe | Nullable&lt;[ContainerProbeBaseSpec](#containerprobebasespec)&gt; | False | - | - 
+ports | Nullable&lt;List&lt;[ContainerPort](#containerport)&gt;&gt; | False | &lt;unknown transformation&gt; | - 
+readinessProbe | Nullable&lt;[ContainerProbeBaseSpec](#containerprobebasespec)&gt; | False | - | - 
+resources | Nullable&lt;[ContainerResourceSpec](#containerresourcespec)&gt; | False | - | - 
+securityContext | Nullable&lt;[SecurityContext](#securitycontext)&gt; | False | - | - 
+terminationMessagePath | Nullable&lt;NonEmpty&lt;Path&gt;&gt; | False | - | - 
+volumeMounts | Nullable&lt;List&lt;[ContainerVolumeMountSpec](#containervolumemountspec)&gt;&gt; | False | &lt;unknown transformation&gt; | - 
 ## DplRecreateStrategy
 #### Parents: 
 - [DplBaseUpdateStrategy](#dplbaseupdatestrategy)
 ####  Parent types: 
 - [Deployment](#deployment)
-####  Properties:
-
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
 ## DCTrigger
 ####  Children: 
 - [DCConfigChangeTrigger](#dcconfigchangetrigger)
 - [DCImageChangeTrigger](#dcimagechangetrigger)
 ####  Parent types: 
 - [DeploymentConfig](#deploymentconfig)
-####  Properties:
-
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
 ## ContainerEnvSecretSpec
 #### Parents: 
 - [ContainerEnvBaseSpec](#containerenvbasespec)
@@ -497,11 +477,11 @@ Name | Type | Identifier | Abstract | Mapping
 - [DCLifecycleNewPod](#dclifecyclenewpod)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-key | NonEmpty<String> | False | False | - 
-name | EnvString | False | False | - 
-secret_name | Identifier | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+key | NonEmpty&lt;String&gt; | False | - | - 
+name | EnvString | False | - | - 
+secret_name | Identifier | False | - | - 
 ## MatchExpressionsSelector
 #### Parents: 
 - [BaseSelector](#baseselector)
@@ -512,9 +492,9 @@ secret_name | Identifier | False | False | -
 - [PersistentVolumeClaim](#persistentvolumeclaim)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-matchExpressions | NonEmpty<List<MatchExpression>> | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+matchExpressions | NonEmpty&lt;List&lt;[MatchExpression](#matchexpression)&gt;&gt; | False | - | - 
 ## ContainerProbeBaseSpec
 ####  Children: 
 - [ContainerProbeTCPPortSpec](#containerprobetcpportspec)
@@ -523,13 +503,13 @@ matchExpressions | NonEmpty<List<MatchExpression>> | False | False | -
 - [ContainerSpec](#containerspec)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-failureThreshold | Nullable<Positive<NonZero<Integer>>> | False | False | - 
-initialDelaySeconds | Nullable<Positive<Integer>> | False | False | - 
-periodSeconds | Nullable<Positive<NonZero<Integer>>> | False | False | - 
-successThreshold | Nullable<Positive<NonZero<Integer>>> | False | False | - 
-timeoutSeconds | Nullable<Positive<NonZero<Integer>>> | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+failureThreshold | Nullable&lt;Positive&lt;NonZero&lt;Integer&gt;&gt;&gt; | False | - | - 
+initialDelaySeconds | Nullable&lt;Positive&lt;Integer&gt;&gt; | False | - | - 
+periodSeconds | Nullable&lt;Positive&lt;NonZero&lt;Integer&gt;&gt;&gt; | False | - | - 
+successThreshold | Nullable&lt;Positive&lt;NonZero&lt;Integer&gt;&gt;&gt; | False | - | - 
+timeoutSeconds | Nullable&lt;Positive&lt;NonZero&lt;Integer&gt;&gt;&gt; | False | - | - 
 ## PodVolumeEmptyDirSpec
 #### Parents: 
 - [PodVolumeBaseSpec](#podvolumebasespec)
@@ -537,9 +517,9 @@ timeoutSeconds | Nullable<Positive<NonZero<Integer>>> | False | False | -
 - [PodTemplateSpec](#podtemplatespec)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-name | Identifier | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+name | Identifier | False | - | - 
 ## PolicyBinding
 #### Metadata
 ```
@@ -548,10 +528,10 @@ name | Identifier | False | False | -
 ```
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
 name | ColonIdentifier | True | False | - 
-roleBindings | List<PolicyBindingRoleBinding> | False | True | - 
+roleBindings | List&lt;[PolicyBindingRoleBinding](#policybindingrolebinding)&gt; | False | &lt;unknown transformation&gt; | - 
 ## ConfigMap
 #### Metadata
 ```
@@ -560,19 +540,19 @@ roleBindings | List<PolicyBindingRoleBinding> | False | True | -
 ```
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
 name | Identifier | True | False | - 
-files | Map<String, String> | False | False | - 
+files | Map&lt;String, String&gt; | False | - | - 
 ## SCCGroups
 ####  Parent types: 
 - [SecurityContextConstraints](#securitycontextconstraints)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-ranges | Nullable<List<SCCGroupRange>> | False | False | - 
-type | Nullable<Enum(u'MustRunAs', u'RunAsAny')> | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+ranges | Nullable&lt;List&lt;[SCCGroupRange](#sccgrouprange)&gt;&gt; | False | - | - 
+type | Nullable&lt;Enum('MustRunAs', 'RunAsAny')&gt; | False | - | - 
 ## DCCustomStrategy
 #### Parents: 
 - [DCBaseUpdateStrategy](#dcbaseupdatestrategy)
@@ -580,22 +560,22 @@ type | Nullable<Enum(u'MustRunAs', u'RunAsAny')> | False | False | -
 - [DeploymentConfig](#deploymentconfig)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-activeDeadlineSeconds | Nullable<Positive<NonZero<Integer>>> | False | False | - 
-annotations | Map<String, String> | False | False | - 
-customParams | DCCustomParams | False | False | - 
-labels | Map<String, String> | False | False | - 
-resources | Nullable<ContainerResourceSpec> | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+activeDeadlineSeconds | Nullable&lt;Positive&lt;NonZero&lt;Integer&gt;&gt;&gt; | False | - | - 
+annotations | Map&lt;String, String&gt; | False | - | - 
+customParams | [DCCustomParams](#dccustomparams) | False | - | - 
+labels | Map&lt;String, String&gt; | False | - | - 
+resources | Nullable&lt;[ContainerResourceSpec](#containerresourcespec)&gt; | False | - | - 
 ## ContainerResourceEachSpec
 ####  Parent types: 
 - [ContainerResourceSpec](#containerresourcespec)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-cpu | Nullable<Positive<NonZero<Number>>> | False | True | - 
-memory | Nullable<Memory> | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+cpu | Nullable&lt;Positive&lt;NonZero&lt;Number&gt;&gt;&gt; | False | &lt;unknown transformation&gt; | - 
+memory | Nullable&lt;Memory&gt; | False | - | - 
 ## StorageClass
 #### Metadata
 ```
@@ -604,34 +584,34 @@ memory | Nullable<Memory> | False | False | -
 ```
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
 name | Identifier | True | False | - 
-parameters | Map<String, String> | False | False | - 
-provisioner | String | False | False | - 
+parameters | Map&lt;String, String&gt; | False | - | - 
+provisioner | String | False | - | - 
 ## DCRollingParams
 ####  Parent types: 
 - [DCRollingStrategy](#dcrollingstrategy)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-intervalSeconds | Nullable<Positive<NonZero<Integer>>> | False | False | - 
-maxSurge | SurgeSpec | False | False | - 
-maxUnavailable | SurgeSpec | False | False | - 
-post | Nullable<DCLifecycleHook> | False | False | - 
-pre | Nullable<DCLifecycleHook> | False | False | - 
-timeoutSeconds | Nullable<Positive<NonZero<Integer>>> | False | False | - 
-updatePeriodSeconds | Nullable<Positive<NonZero<Integer>>> | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+intervalSeconds | Nullable&lt;Positive&lt;NonZero&lt;Integer&gt;&gt;&gt; | False | - | - 
+maxSurge | SurgeSpec | False | - | - 
+maxUnavailable | SurgeSpec | False | - | - 
+post | Nullable&lt;[DCLifecycleHook](#dclifecyclehook)&gt; | False | - | - 
+pre | Nullable&lt;[DCLifecycleHook](#dclifecyclehook)&gt; | False | - | - 
+timeoutSeconds | Nullable&lt;Positive&lt;NonZero&lt;Integer&gt;&gt;&gt; | False | - | - 
+updatePeriodSeconds | Nullable&lt;Positive&lt;NonZero&lt;Integer&gt;&gt;&gt; | False | - | - 
 ## SCCGroupRange
 ####  Parent types: 
 - [SCCGroups](#sccgroups)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-max | Positive<NonZero<Integer>> | False | False | - 
-min | Positive<NonZero<Integer>> | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+max | Positive&lt;NonZero&lt;Integer&gt;&gt; | False | - | - 
+min | Positive&lt;NonZero&lt;Integer&gt;&gt; | False | - | - 
 ## DCCustomParams
 #### Parents: 
 - [EnvironmentPreProcessMixin](#environmentpreprocessmixin)
@@ -641,42 +621,38 @@ min | Positive<NonZero<Integer>> | False | False | -
 - [DCRollingStrategy](#dcrollingstrategy)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-command | Nullable<List<String>> | False | False | - 
-environment | Nullable<List<ContainerEnvBaseSpec>> | False | True | - 
-image | NonEmpty<String> | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+command | Nullable&lt;List&lt;String&gt;&gt; | False | - | - 
+environment | Nullable&lt;List&lt;[ContainerEnvBaseSpec](#containerenvbasespec)&gt;&gt; | False | &lt;unknown transformation&gt; | - 
+image | NonEmpty&lt;String&gt; | False | - | - 
 ## ContainerVolumeMountSpec
 ####  Parent types: 
 - [ContainerSpec](#containerspec)
 - [DCLifecycleNewPod](#dclifecyclenewpod)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-name | Identifier | False | False | - 
-path | NonEmpty<Path> | False | False | - 
-readOnly | Nullable<Boolean> | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+name | Identifier | False | - | - 
+path | NonEmpty&lt;Path&gt; | False | - | - 
+readOnly | Nullable&lt;Boolean&gt; | False | - | - 
 ## LifeCycleProbe
 ####  Children: 
 - [LifeCycleExec](#lifecycleexec)
 - [LifeCycleHTTP](#lifecyclehttp)
 ####  Parent types: 
 - [LifeCycle](#lifecycle)
-####  Properties:
-
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
 ## SASecretSubject
 ####  Parent types: 
 - [ServiceAccount](#serviceaccount)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-kind | Nullable<CaseIdentifier> | False | False | - 
-name | Nullable<Identifier> | False | False | - 
-ns | Nullable<Identifier> | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+kind | Nullable&lt;CaseIdentifier&gt; | False | - | - 
+name | Nullable&lt;Identifier&gt; | False | - | - 
+ns | Nullable&lt;Identifier&gt; | False | - | - 
 ## PodTemplateSpec
 ####  Parent types: 
 - [DaemonSet](#daemonset)
@@ -691,21 +667,21 @@ ns | Nullable<Identifier> | False | False | -
 ```
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-containers | NonEmpty<List<ContainerSpec>> | False | False | - 
-dnsPolicy | Nullable<Enum(u'ClusterFirst')> | False | False | - 
-hostIPC | Nullable<Boolean> | False | False | - 
-hostNetwork | Nullable<Boolean> | False | False | - 
-hostPID | Nullable<Boolean> | False | False | - 
-imagePullSecrets | Nullable<List<PodImagePullSecret>> | False | True | - 
-name | Nullable<Identifier> | False | False | - 
-nodeSelector | Nullable<Map<String, String>> | False | False | - 
-restartPolicy | Nullable<Enum(u'Always', u'OnFailure', u'Never')> | False | False | - 
-securityContext | Nullable<SecurityContext> | False | False | - 
-serviceAccountName | Nullable<Identifier> | False | True | [serviceAccount](#serviceaccount) 
-terminationGracePeriodSeconds | Nullable<Positive<Integer>> | False | False | - 
-volumes | Nullable<List<PodVolumeBaseSpec>> | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+containers | NonEmpty&lt;List&lt;[ContainerSpec](#containerspec)&gt;&gt; | False | - | - 
+dnsPolicy | Nullable&lt;Enum('ClusterFirst')&gt; | False | - | - 
+hostIPC | Nullable&lt;Boolean&gt; | False | - | - 
+hostNetwork | Nullable&lt;Boolean&gt; | False | - | - 
+hostPID | Nullable&lt;Boolean&gt; | False | - | - 
+imagePullSecrets | Nullable&lt;List&lt;[PodImagePullSecret](#podimagepullsecret)&gt;&gt; | False | &lt;unknown transformation&gt; | - 
+name | Nullable&lt;Identifier&gt; | False | - | - 
+nodeSelector | Nullable&lt;Map&lt;String, String&gt;&gt; | False | - | - 
+restartPolicy | Nullable&lt;Enum('Always', 'OnFailure', 'Never')&gt; | False | - | - 
+securityContext | Nullable&lt;[SecurityContext](#securitycontext)&gt; | False | - | - 
+serviceAccountName | Nullable&lt;Identifier&gt; | False | &lt;unknown transformation&gt; | [serviceAccount](#serviceaccount) 
+terminationGracePeriodSeconds | Nullable&lt;Positive&lt;Integer&gt;&gt; | False | - | - 
+volumes | Nullable&lt;List&lt;[PodVolumeBaseSpec](#podvolumebasespec)&gt;&gt; | False | - | - 
 ## User
 #### Metadata
 ```
@@ -714,11 +690,11 @@ volumes | Nullable<List<PodVolumeBaseSpec>> | False | False | -
 ```
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
 name | UserIdentifier | True | False | - 
-fullName | Nullable<String> | False | False | - 
-identities | NonEmpty<List<NonEmpty<String>>> | False | False | - 
+fullName | Nullable&lt;String&gt; | False | - | - 
+identities | NonEmpty&lt;List&lt;NonEmpty&lt;String&gt;&gt;&gt; | False | - | - 
 ## ContainerEnvConfigMapSpec
 #### Parents: 
 - [ContainerEnvBaseSpec](#containerenvbasespec)
@@ -728,11 +704,11 @@ identities | NonEmpty<List<NonEmpty<String>>> | False | False | -
 - [DCLifecycleNewPod](#dclifecyclenewpod)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-key | NonEmpty<String> | False | False | - 
-map_name | Identifier | False | False | - 
-name | EnvString | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+key | NonEmpty&lt;String&gt; | False | - | - 
+map_name | Identifier | False | - | - 
+name | EnvString | False | - | - 
 ## LifeCycleExec
 #### Parents: 
 - [LifeCycleProbe](#lifecycleprobe)
@@ -740,9 +716,9 @@ name | EnvString | False | False | -
 - [LifeCycle](#lifecycle)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-command | NonEmpty<List<String>> | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+command | NonEmpty&lt;List&lt;String&gt;&gt; | False | - | - 
 ## DCRollingStrategy
 #### Parents: 
 - [DCBaseUpdateStrategy](#dcbaseupdatestrategy)
@@ -750,14 +726,14 @@ command | NonEmpty<List<String>> | False | False | -
 - [DeploymentConfig](#deploymentconfig)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-activeDeadlineSeconds | Nullable<Positive<NonZero<Integer>>> | False | False | - 
-annotations | Map<String, String> | False | False | - 
-customParams | Nullable<DCCustomParams> | False | False | - 
-labels | Map<String, String> | False | False | - 
-resources | Nullable<ContainerResourceSpec> | False | False | - 
-rollingParams | Nullable<DCRollingParams> | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+activeDeadlineSeconds | Nullable&lt;Positive&lt;NonZero&lt;Integer&gt;&gt;&gt; | False | - | - 
+annotations | Map&lt;String, String&gt; | False | - | - 
+customParams | Nullable&lt;[DCCustomParams](#dccustomparams)&gt; | False | - | - 
+labels | Map&lt;String, String&gt; | False | - | - 
+resources | Nullable&lt;[ContainerResourceSpec](#containerresourcespec)&gt; | False | - | - 
+rollingParams | Nullable&lt;[DCRollingParams](#dcrollingparams)&gt; | False | - | - 
 ## RouteDest
 ####  Children: 
 - [RouteDestService](#routedestservice)
@@ -765,9 +741,9 @@ rollingParams | Nullable<DCRollingParams> | False | False | -
 - [Route](#route)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-weight | Positive<NonZero<Integer>> | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+weight | Positive&lt;NonZero&lt;Integer&gt;&gt; | False | - | - 
 ## ContainerEnvPodFieldSpec
 #### Parents: 
 - [ContainerEnvBaseSpec](#containerenvbasespec)
@@ -777,11 +753,11 @@ weight | Positive<NonZero<Integer>> | False | False | -
 - [DCLifecycleNewPod](#dclifecyclenewpod)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-apiVersion | Nullable<Enum(u'v1')> | False | False | - 
-fieldPath | Enum(u'metadata.name', u'metadata.namespace', u'metadata.labels', u'metadata.annotations', u'spec.nodeName', u'spec.serviceAccountName', u'status.podIP') | False | False | - 
-name | EnvString | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+apiVersion | Nullable&lt;Enum('v1')&gt; | False | - | - 
+fieldPath | Enum('metadata.name', 'metadata.namespace', 'metadata.labels', 'metadata.annotations', 'spec.nodeName', 'spec.serviceAccountName', 'status.podIP') | False | - | - 
+name | EnvString | False | - | - 
 ## ServiceAccount
 #### Metadata
 ```
@@ -790,11 +766,11 @@ name | EnvString | False | False | -
 ```
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
 name | Identifier | True | False | - 
-imagePullSecrets | Nullable<List<SAImgPullSecretSubject>> | False | True | - 
-secrets | Nullable<List<SASecretSubject>> | False | True | - 
+imagePullSecrets | Nullable&lt;List&lt;[SAImgPullSecretSubject](#saimgpullsecretsubject)&gt;&gt; | False | &lt;unknown transformation&gt; | - 
+secrets | Nullable&lt;List&lt;[SASecretSubject](#sasecretsubject)&gt;&gt; | False | &lt;unknown transformation&gt; | - 
 ## PodVolumeBaseSpec
 ####  Children: 
 - [PodVolumeHostSpec](#podvolumehostspec)
@@ -807,9 +783,9 @@ secrets | Nullable<List<SASecretSubject>> | False | True | -
 - [PodTemplateSpec](#podtemplatespec)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-name | Identifier | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+name | Identifier | False | - | - 
 ## ClusterRole
 #### Parents: 
 - [RoleBase](#rolebase)
@@ -820,21 +796,21 @@ name | Identifier | False | False | -
 ```
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
 name | Identifier | True | False | - 
-rules | NonEmpty<List<PolicyRule>> | False | False | - 
+rules | NonEmpty&lt;List&lt;[PolicyRule](#policyrule)&gt;&gt; | False | - | - 
 ## DCLifecycleHook
 ####  Parent types: 
 - [DCRecreateParams](#dcrecreateparams)
 - [DCRollingParams](#dcrollingparams)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-execNewPod | Nullable<DCLifecycleNewPod> | False | False | - 
-failurePolicy | Enum(u'Abort', u'Retry', u'Ignore') | False | False | - 
-tagImages | Nullable<DCTagImages> | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+execNewPod | Nullable&lt;[DCLifecycleNewPod](#dclifecyclenewpod)&gt; | False | - | - 
+failurePolicy | Enum('Abort', 'Retry', 'Ignore') | False | - | - 
+tagImages | Nullable&lt;[DCTagImages](#dctagimages)&gt; | False | - | - 
 ## ClusterIPService
 #### Parents: 
 - [Service](#service)
@@ -845,24 +821,24 @@ tagImages | Nullable<DCTagImages> | False | False | -
 ```
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
 name | Identifier | True | False | - 
-clusterIP | Nullable<IPv4> | False | False | - 
-ports | NonEmpty<List<ServicePort>> | False | True | - 
-selector | NonEmpty<Map<String, String>> | False | True | - 
-sessionAffinity | Nullable<Enum(u'ClientIP', u'None')> | False | False | - 
+clusterIP | Nullable&lt;IPv4&gt; | False | - | - 
+ports | NonEmpty&lt;List&lt;[ServicePort](#serviceport)&gt;&gt; | False | &lt;unknown transformation&gt; | - 
+selector | NonEmpty&lt;Map&lt;String, String&gt;&gt; | False | &lt;unknown transformation&gt; | - 
+sessionAffinity | Nullable&lt;Enum('ClientIP', 'None')&gt; | False | - | - 
 ## PersistentVolumeRef
 ####  Parent types: 
 - [PersistentVolume](#persistentvolume)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-apiVersion | Nullable<String> | False | False | - 
-kind | Nullable<CaseIdentifier> | False | False | - 
-name | Nullable<Identifier> | False | False | - 
-ns | Nullable<Identifier> | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+apiVersion | Nullable&lt;String&gt; | False | - | - 
+kind | Nullable&lt;CaseIdentifier&gt; | False | - | - 
+name | Nullable&lt;Identifier&gt; | False | - | - 
+ns | Nullable&lt;Identifier&gt; | False | - | - 
 ## DCLifecycleNewPod
 #### Parents: 
 - [EnvironmentPreProcessMixin](#environmentpreprocessmixin)
@@ -870,13 +846,13 @@ ns | Nullable<Identifier> | False | False | -
 - [DCLifecycleHook](#dclifecyclehook)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-command | NonEmpty<List<String>> | False | False | - 
-containerName | Identifier | False | False | - 
-env | Nullable<List<ContainerEnvBaseSpec>> | False | True | - 
-volumeMounts | Nullable<List<ContainerVolumeMountSpec>> | False | False | - 
-volumes | Nullable<List<Identifier>> | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+command | NonEmpty&lt;List&lt;String&gt;&gt; | False | - | - 
+containerName | Identifier | False | - | - 
+env | Nullable&lt;List&lt;[ContainerEnvBaseSpec](#containerenvbasespec)&gt;&gt; | False | &lt;unknown transformation&gt; | - 
+volumeMounts | Nullable&lt;List&lt;[ContainerVolumeMountSpec](#containervolumemountspec)&gt;&gt; | False | - | - 
+volumes | Nullable&lt;List&lt;Identifier&gt;&gt; | False | - | - 
 ## ContainerProbeTCPPortSpec
 #### Parents: 
 - [ContainerProbeBaseSpec](#containerprobebasespec)
@@ -884,14 +860,14 @@ volumes | Nullable<List<Identifier>> | False | False | -
 - [ContainerSpec](#containerspec)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-failureThreshold | Nullable<Positive<NonZero<Integer>>> | False | False | - 
-initialDelaySeconds | Nullable<Positive<Integer>> | False | False | - 
-periodSeconds | Nullable<Positive<NonZero<Integer>>> | False | False | - 
-port | Positive<NonZero<Integer>> | False | True | - 
-successThreshold | Nullable<Positive<NonZero<Integer>>> | False | False | - 
-timeoutSeconds | Nullable<Positive<NonZero<Integer>>> | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+failureThreshold | Nullable&lt;Positive&lt;NonZero&lt;Integer&gt;&gt;&gt; | False | - | - 
+initialDelaySeconds | Nullable&lt;Positive&lt;Integer&gt;&gt; | False | - | - 
+periodSeconds | Nullable&lt;Positive&lt;NonZero&lt;Integer&gt;&gt;&gt; | False | - | - 
+port | Positive&lt;NonZero&lt;Integer&gt;&gt; | False | &lt;unknown transformation&gt; | - 
+successThreshold | Nullable&lt;Positive&lt;NonZero&lt;Integer&gt;&gt;&gt; | False | - | - 
+timeoutSeconds | Nullable&lt;Positive&lt;NonZero&lt;Integer&gt;&gt;&gt; | False | - | - 
 ## ContainerEnvBaseSpec
 ####  Children: 
 - [ContainerEnvSpec](#containerenvspec)
@@ -905,9 +881,9 @@ timeoutSeconds | Nullable<Positive<NonZero<Integer>>> | False | False | -
 - [DCLifecycleNewPod](#dclifecyclenewpod)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-name | EnvString | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+name | EnvString | False | - | - 
 ## PodVolumeHostSpec
 #### Parents: 
 - [PodVolumeBaseSpec](#podvolumebasespec)
@@ -915,36 +891,36 @@ name | EnvString | False | False | -
 - [PodTemplateSpec](#podtemplatespec)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-name | Identifier | False | False | - 
-path | String | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+name | Identifier | False | - | - 
+path | String | False | - | - 
 ## DCRecreateParams
 ####  Parent types: 
 - [DCRecreateStrategy](#dcrecreatestrategy)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-mid | Nullable<DCLifecycleHook> | False | False | - 
-post | Nullable<DCLifecycleHook> | False | False | - 
-pre | Nullable<DCLifecycleHook> | False | False | - 
-timeoutSeconds | Nullable<Positive<NonZero<Integer>>> | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+mid | Nullable&lt;[DCLifecycleHook](#dclifecyclehook)&gt; | False | - | - 
+post | Nullable&lt;[DCLifecycleHook](#dclifecyclehook)&gt; | False | - | - 
+pre | Nullable&lt;[DCLifecycleHook](#dclifecyclehook)&gt; | False | - | - 
+timeoutSeconds | Nullable&lt;Positive&lt;NonZero&lt;Integer&gt;&gt;&gt; | False | - | - 
 ## DCTagImages
 ####  Parent types: 
 - [DCLifecycleHook](#dclifecyclehook)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-containerName | Identifier | False | False | - 
-toApiVersion | Nullable<String> | False | False | - 
-toFieldPath | Nullable<String> | False | False | - 
-toKind | Nullable<Enum(u'Deployment', u'DeploymentConfig', u'ImageStreamTag')> | False | False | - 
-toName | Nullable<Identifier> | False | False | - 
-toNamespace | Nullable<Identifier> | False | False | - 
-toResourceVersion | Nullable<String> | False | False | - 
-toUid | Nullable<String> | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+containerName | Identifier | False | - | - 
+toApiVersion | Nullable&lt;String&gt; | False | - | - 
+toFieldPath | Nullable&lt;String&gt; | False | - | - 
+toKind | Nullable&lt;Enum('Deployment', 'DeploymentConfig', 'ImageStreamTag')&gt; | False | - | - 
+toName | Nullable&lt;Identifier&gt; | False | - | - 
+toNamespace | Nullable&lt;Identifier&gt; | False | - | - 
+toResourceVersion | Nullable&lt;String&gt; | False | - | - 
+toUid | Nullable&lt;String&gt; | False | - | - 
 ## Secret
 ####  Children: 
 - [DockerCredentials](#dockercredentials)
@@ -956,19 +932,19 @@ toUid | Nullable<String> | False | False | -
 ```
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
 name | Identifier | True | False | - 
-secrets | Map<String, String> | False | False | - 
-type | NonEmpty<String> | False | False | - 
+secrets | Map&lt;String, String&gt; | False | - | - 
+type | NonEmpty&lt;String&gt; | False | - | - 
 ## RouteDestPort
 ####  Parent types: 
 - [Route](#route)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-targetPort | Identifier | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+targetPort | Identifier | False | - | - 
 ## BaseSelector
 ####  Children: 
 - [MatchLabelsSelector](#matchlabelsselector)
@@ -978,10 +954,6 @@ targetPort | Identifier | False | False | -
 - [Deployment](#deployment)
 - [Job](#job)
 - [PersistentVolumeClaim](#persistentvolumeclaim)
-####  Properties:
-
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
 ## ContainerProbeHTTPSpec
 #### Parents: 
 - [ContainerProbeBaseSpec](#containerprobebasespec)
@@ -989,17 +961,17 @@ Name | Type | Identifier | Abstract | Mapping
 - [ContainerSpec](#containerspec)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-failureThreshold | Nullable<Positive<NonZero<Integer>>> | False | False | - 
-host | Nullable<Domain> | False | False | - 
-initialDelaySeconds | Nullable<Positive<Integer>> | False | False | - 
-path | NonEmpty<Path> | False | False | - 
-periodSeconds | Nullable<Positive<NonZero<Integer>>> | False | False | - 
-port | Positive<NonZero<Integer>> | False | True | - 
-scheme | Nullable<Enum(u'HTTP', u'HTTPS')> | False | False | - 
-successThreshold | Nullable<Positive<NonZero<Integer>>> | False | False | - 
-timeoutSeconds | Nullable<Positive<NonZero<Integer>>> | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+failureThreshold | Nullable&lt;Positive&lt;NonZero&lt;Integer&gt;&gt;&gt; | False | - | - 
+host | Nullable&lt;Domain&gt; | False | - | - 
+initialDelaySeconds | Nullable&lt;Positive&lt;Integer&gt;&gt; | False | - | - 
+path | NonEmpty&lt;Path&gt; | False | - | - 
+periodSeconds | Nullable&lt;Positive&lt;NonZero&lt;Integer&gt;&gt;&gt; | False | - | - 
+port | Positive&lt;NonZero&lt;Integer&gt;&gt; | False | &lt;unknown transformation&gt; | - 
+scheme | Nullable&lt;Enum('HTTP', 'HTTPS')&gt; | False | - | - 
+successThreshold | Nullable&lt;Positive&lt;NonZero&lt;Integer&gt;&gt;&gt; | False | - | - 
+timeoutSeconds | Nullable&lt;Positive&lt;NonZero&lt;Integer&gt;&gt;&gt; | False | - | - 
 ## ServicePort
 ####  Parent types: 
 - [AWSLoadBalancerService](#awsloadbalancerservice)
@@ -1007,21 +979,21 @@ timeoutSeconds | Nullable<Positive<NonZero<Integer>>> | False | False | -
 - [Service](#service)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-name | Nullable<Identifier> | False | False | - 
-port | Positive<NonZero<Integer>> | False | False | - 
-protocol | Enum(u'TCP', u'UDP') | False | False | - 
-targetPort | OneOf<Positive<NonZero<Integer>>, Identifier> | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+name | Nullable&lt;Identifier&gt; | False | - | - 
+port | Positive&lt;NonZero&lt;Integer&gt;&gt; | False | - | - 
+protocol | Enum('TCP', 'UDP') | False | - | - 
+targetPort | OneOf&lt;Positive&lt;NonZero&lt;Integer&gt;&gt;, Identifier&gt; | False | - | - 
 ## AWSElasticBlockStore
 ####  Parent types: 
 - [PersistentVolume](#persistentvolume)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-fsType | Enum(u'ext4') | False | False | - 
-volumeID | AWSVolID | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+fsType | Enum('ext4') | False | - | - 
+volumeID | AWSVolID | False | - | - 
 ## ReplicationController
 #### Metadata
 ```
@@ -1030,21 +1002,21 @@ volumeID | AWSVolID | False | False | -
 ```
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
 name | Identifier | True | False | - 
-minReadySeconds | Nullable<Positive<NonZero<Integer>>> | False | False | - 
-pod_template | PodTemplateSpec | False | False | - 
-replicas | Positive<NonZero<Integer>> | False | False | - 
-selector | Nullable<Map<String, String>> | False | False | - 
+minReadySeconds | Nullable&lt;Positive&lt;NonZero&lt;Integer&gt;&gt;&gt; | False | - | - 
+pod_template | [PodTemplateSpec](#podtemplatespec) | False | - | - 
+replicas | Positive&lt;NonZero&lt;Integer&gt;&gt; | False | - | - 
+selector | Nullable&lt;Map&lt;String, String&gt;&gt; | False | - | - 
 ## SAImgPullSecretSubject
 ####  Parent types: 
 - [ServiceAccount](#serviceaccount)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-name | Identifier | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+name | Identifier | False | - | - 
 ## Deployment
 #### Metadata
 ```
@@ -1053,25 +1025,25 @@ name | Identifier | False | False | -
 ```
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
 name | Identifier | True | False | - 
-minReadySeconds | Nullable<Positive<NonZero<Integer>>> | False | False | - 
-paused | Nullable<Boolean> | False | False | - 
-pod_template | PodTemplateSpec | False | False | - 
-progressDeadlineSeconds | Nullable<Positive<NonZero<Integer>>> | False | False | - 
-replicas | Positive<NonZero<Integer>> | False | False | - 
-revisionHistoryLimit | Nullable<Positive<NonZero<Integer>>> | False | False | - 
-selector | Nullable<BaseSelector> | False | False | - 
-strategy | Nullable<DplBaseUpdateStrategy> | False | False | - 
+minReadySeconds | Nullable&lt;Positive&lt;NonZero&lt;Integer&gt;&gt;&gt; | False | - | - 
+paused | Nullable&lt;Boolean&gt; | False | - | - 
+pod_template | [PodTemplateSpec](#podtemplatespec) | False | - | - 
+progressDeadlineSeconds | Nullable&lt;Positive&lt;NonZero&lt;Integer&gt;&gt;&gt; | False | - | - 
+replicas | Positive&lt;NonZero&lt;Integer&gt;&gt; | False | - | - 
+revisionHistoryLimit | Nullable&lt;Positive&lt;NonZero&lt;Integer&gt;&gt;&gt; | False | - | - 
+selector | Nullable&lt;[BaseSelector](#baseselector)&gt; | False | - | - 
+strategy | Nullable&lt;[DplBaseUpdateStrategy](#dplbaseupdatestrategy)&gt; | False | - | - 
 ## PodImagePullSecret
 ####  Parent types: 
 - [PodTemplateSpec](#podtemplatespec)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-name | Identifier | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+name | Identifier | False | - | - 
 ## RoleSubject
 ####  Parent types: 
 - [ClusterRoleBinding](#clusterrolebinding)
@@ -1080,11 +1052,11 @@ name | Identifier | False | False | -
 - [RoleBindingBase](#rolebindingbase)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-kind | CaseIdentifier | False | False | - 
-name | String | False | False | - 
-ns | Nullable<Identifier> | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+kind | CaseIdentifier | False | - | - 
+name | String | False | - | - 
+ns | Nullable&lt;Identifier&gt; | False | - | - 
 ## SecurityContextConstraints
 #### Metadata
 ```
@@ -1093,28 +1065,28 @@ ns | Nullable<Identifier> | False | False | -
 ```
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
 name | Identifier | True | False | - 
-allowHostDirVolumePlugin | Boolean | False | False | - 
-allowHostIPC | Boolean | False | False | - 
-allowHostNetwork | Boolean | False | False | - 
-allowHostPID | Boolean | False | False | - 
-allowHostPorts | Boolean | False | False | - 
-allowPrivilegedContainer | Boolean | False | False | - 
-allowedCapabilities | Nullable<List<String>> | False | False | - 
-defaultAddCapabilities | Nullable<List<String>> | False | False | - 
-fsGroup | Nullable<SCCGroups> | False | False | - 
-groups | List<SystemIdentifier> | False | False | - 
-priority | Nullable<Positive<Integer>> | False | False | - 
-readOnlyRootFilesystem | Boolean | False | False | - 
-requiredDropCapabilities | Nullable<List<String>> | False | False | - 
-runAsUser | Nullable<SCCRunAsUser> | False | False | - 
-seLinuxContext | Nullable<SCCSELinux> | False | False | - 
-seccompProfiles | Nullable<List<String>> | False | False | - 
-supplementalGroups | Nullable<SCCGroups> | False | False | - 
-users | List<SystemIdentifier> | False | False | - 
-volumes | List<Enum(u'configMap', u'downwardAPI', u'emptyDir', u'hostPath', u'nfs', u'persistentVolumeClaim', u'secret', u'*')> | False | False | - 
+allowHostDirVolumePlugin | Boolean | False | - | - 
+allowHostIPC | Boolean | False | - | - 
+allowHostNetwork | Boolean | False | - | - 
+allowHostPID | Boolean | False | - | - 
+allowHostPorts | Boolean | False | - | - 
+allowPrivilegedContainer | Boolean | False | - | - 
+allowedCapabilities | Nullable&lt;List&lt;String&gt;&gt; | False | - | - 
+defaultAddCapabilities | Nullable&lt;List&lt;String&gt;&gt; | False | - | - 
+fsGroup | Nullable&lt;[SCCGroups](#sccgroups)&gt; | False | - | - 
+groups | List&lt;SystemIdentifier&gt; | False | - | - 
+priority | Nullable&lt;Positive&lt;Integer&gt;&gt; | False | - | - 
+readOnlyRootFilesystem | Boolean | False | - | - 
+requiredDropCapabilities | Nullable&lt;List&lt;String&gt;&gt; | False | - | - 
+runAsUser | Nullable&lt;[SCCRunAsUser](#sccrunasuser)&gt; | False | - | - 
+seLinuxContext | Nullable&lt;[SCCSELinux](#sccselinux)&gt; | False | - | - 
+seccompProfiles | Nullable&lt;List&lt;String&gt;&gt; | False | - | - 
+supplementalGroups | Nullable&lt;[SCCGroups](#sccgroups)&gt; | False | - | - 
+users | List&lt;SystemIdentifier&gt; | False | - | - 
+volumes | List&lt;Enum('configMap', 'downwardAPI', 'emptyDir', 'hostPath', 'nfs', 'persistentVolumeClaim', 'secret', '*')&gt; | False | - | - 
 ## Route
 #### Metadata
 ```
@@ -1123,14 +1095,14 @@ volumes | List<Enum(u'configMap', u'downwardAPI', u'emptyDir', u'hostPath', u'nf
 ```
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
 name | Identifier | True | False | - 
-host | Domain | False | False | - 
-port | RouteDestPort | False | False | - 
-tls | Nullable<RouteTLS> | False | False | - 
-to | NonEmpty<List<RouteDest>> | False | False | - 
-wildcardPolicy | Enum(u'Subdomain', u'None') | False | False | - 
+host | Domain | False | - | - 
+port | [RouteDestPort](#routedestport) | False | - | - 
+tls | Nullable&lt;[RouteTLS](#routetls)&gt; | False | - | - 
+to | NonEmpty&lt;List&lt;[RouteDest](#routedest)&gt;&gt; | False | - | - 
+wildcardPolicy | Enum('Subdomain', 'None') | False | - | - 
 ## ContainerResourceSpec
 ####  Parent types: 
 - [ContainerSpec](#containerspec)
@@ -1140,10 +1112,10 @@ wildcardPolicy | Enum(u'Subdomain', u'None') | False | False | -
 - [DCRollingStrategy](#dcrollingstrategy)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-limits | ContainerResourceEachSpec | False | False | - 
-requests | ContainerResourceEachSpec | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+limits | [ContainerResourceEachSpec](#containerresourceeachspec) | False | - | - 
+requests | [ContainerResourceEachSpec](#containerresourceeachspec) | False | - | - 
 ## PolicyBindingRoleBinding
 #### Parents: 
 - [RoleBindingXF](#rolebindingxf)
@@ -1151,22 +1123,22 @@ requests | ContainerResourceEachSpec | False | False | -
 - [PolicyBinding](#policybinding)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-metadata | Nullable<Map<String, String>> | False | False | - 
-name | SystemIdentifier | False | False | - 
-ns | Identifier | False | False | - 
-roleRef | RoleRef | False | True | - 
-subjects | NonEmpty<List<RoleSubject>> | False | True | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+metadata | Nullable&lt;Map&lt;String, String&gt;&gt; | False | - | - 
+name | SystemIdentifier | False | - | - 
+ns | Identifier | False | - | - 
+roleRef | [RoleRef](#roleref) | False | &lt;unknown transformation&gt; | - 
+subjects | NonEmpty&lt;List&lt;[RoleSubject](#rolesubject)&gt;&gt; | False | &lt;unknown transformation&gt; | - 
 ## LifeCycle
 ####  Parent types: 
 - [ContainerSpec](#containerspec)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-postStart | Nullable<LifeCycleProbe> | False | False | - 
-preStop | Nullable<LifeCycleProbe> | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+postStart | Nullable&lt;[LifeCycleProbe](#lifecycleprobe)&gt; | False | - | - 
+preStop | Nullable&lt;[LifeCycleProbe](#lifecycleprobe)&gt; | False | - | - 
 ## RoleBinding
 #### Parents: 
 - [RoleBindingBase](#rolebindingbase)
@@ -1178,11 +1150,11 @@ preStop | Nullable<LifeCycleProbe> | False | False | -
 ```
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
 name | SystemIdentifier | True | False | - 
-roleRef | RoleRef | False | True | - 
-subjects | NonEmpty<List<RoleSubject>> | False | True | - 
+roleRef | [RoleRef](#roleref) | False | &lt;unknown transformation&gt; | - 
+subjects | NonEmpty&lt;List&lt;[RoleSubject](#rolesubject)&gt;&gt; | False | &lt;unknown transformation&gt; | - 
 ## MatchLabelsSelector
 #### Parents: 
 - [BaseSelector](#baseselector)
@@ -1193,9 +1165,9 @@ subjects | NonEmpty<List<RoleSubject>> | False | True | -
 - [PersistentVolumeClaim](#persistentvolumeclaim)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-matchLabels | Map<String, String> | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+matchLabels | Map&lt;String, String&gt; | False | - | - 
 ## PolicyRule
 ####  Parent types: 
 - [ClusterRole](#clusterrole)
@@ -1203,14 +1175,14 @@ matchLabels | Map<String, String> | False | False | -
 - [RoleBase](#rolebase)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-apiGroups | NonEmpty<List<String>> | False | False | - 
-attributeRestrictions | Nullable<String> | False | False | - 
-nonResourceURLs | Nullable<List<String>> | False | False | - 
-resourceNames | Nullable<List<String>> | False | False | - 
-resources | NonEmpty<List<NonEmpty<String>>> | False | False | - 
-verbs | NonEmpty<List<Enum(u'get', u'list', u'create', u'update', u'delete', u'deletecollection', u'watch')>> | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+apiGroups | NonEmpty&lt;List&lt;String&gt;&gt; | False | - | - 
+attributeRestrictions | Nullable&lt;String&gt; | False | - | - 
+nonResourceURLs | Nullable&lt;List&lt;String&gt;&gt; | False | - | - 
+resourceNames | Nullable&lt;List&lt;String&gt;&gt; | False | - | - 
+resources | NonEmpty&lt;List&lt;NonEmpty&lt;String&gt;&gt;&gt; | False | - | - 
+verbs | NonEmpty&lt;List&lt;Enum('get', 'list', 'create', 'update', 'delete', 'deletecollection', 'watch')&gt;&gt; | False | - | - 
 ## ContainerEnvContainerResourceSpec
 #### Parents: 
 - [ContainerEnvBaseSpec](#containerenvbasespec)
@@ -1220,12 +1192,12 @@ verbs | NonEmpty<List<Enum(u'get', u'list', u'create', u'update', u'delete', u'd
 - [DCLifecycleNewPod](#dclifecyclenewpod)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-containerName | Nullable<Identifier> | False | False | - 
-divisor | Nullable<NonEmpty<String>> | False | False | - 
-name | EnvString | False | False | - 
-resource | Enum(u'limits.cpu', u'limits.memory', u'requests.cpu', u'requests.memory') | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+containerName | Nullable&lt;Identifier&gt; | False | - | - 
+divisor | Nullable&lt;NonEmpty&lt;String&gt;&gt; | False | - | - 
+name | EnvString | False | - | - 
+resource | Enum('limits.cpu', 'limits.memory', 'requests.cpu', 'requests.memory') | False | - | - 
 ## PodVolumeSecretSpec
 #### Parents: 
 - [PodVolumeItemMapper](#podvolumeitemmapper)
@@ -1234,9 +1206,9 @@ resource | Enum(u'limits.cpu', u'limits.memory', u'requests.cpu', u'requests.mem
 - [PodTemplateSpec](#podtemplatespec)
 ####  Properties:
 
-Name | Type | Identifier | Abstract | Mapping
----- | ---- | ---------- | -------- | -------
-defaultMode | Nullable<Positive<Integer>> | False | False | - 
-item_map | Nullable<Map<String, String>> | False | False | - 
-name | Identifier | False | False | - 
-secret_name | Identifier | False | False | - 
+Name | Type | Identifier | Type Transformation | Aliases
+---- | ---- | ---------- | ------------------- | -------
+defaultMode | Nullable&lt;Positive&lt;Integer&gt;&gt; | False | - | - 
+item_map | Nullable&lt;Map&lt;String, String&gt;&gt; | False | - | - 
+name | Identifier | False | - | - 
+secret_name | Identifier | False | - | - 

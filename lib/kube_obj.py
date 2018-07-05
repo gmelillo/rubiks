@@ -344,7 +344,12 @@ class KubeBaseObj(object):
         ret_help._class_parent_types = cls._parent_types
         ret_help._class_has_metadata = cls.has_metadata
 
-        ret_help._class_xf_hasattr = ['xf_{}'.format(p) for p in sorted(ret_help._class_types.keys()) if hasattr(cls, 'xf_{}'.format(p))]
+        ret_help._class_xf_detail = {}
+        for p in ret_help._class_types:
+            if hasattr(cls, 'xf_' + p):
+                ret_help._class_xf_detail[p] = '<unknown transformation>'
+                if hasattr(getattr(cls, 'xf_' + p), '__doc__') and getattr(cls, 'xf_' + p).__doc__ is not None and len(getattr(cls, 'xf_' + p).__doc__):
+                    ret_help._class_xf_detail[p] = getattr(cls, 'xf_' + p).__doc__
 
         return ret_help
 
