@@ -18,7 +18,7 @@ TLSCredentials (abstract type):
 
 ```
 Service:
-  children: ClusterIPService, AWSLoadBalancerService
+  children: [ClusterIPService](#clusteripservice), [AWSLoadBalancerService](#awsloadbalancerservice)
   metadata:
     annotations:          Map<String, String>
     labels:               Map<String, String>
@@ -48,7 +48,7 @@ DockerCredentials (abstract type):
 
 ```
 DplBaseUpdateStrategy:
-  children: DplRecreateStrategy, DplRollingUpdateStrategy
+  children: [DplRecreateStrategy](#dplrecreatestrategy), [DplRollingUpdateStrategy](#dplrollingupdatestrategy)
   parent types: Deployment
   properties:
 
@@ -249,7 +249,7 @@ LifeCycleHTTP (abstract type):
 ```
 PodVolumeItemMapper:
   parents: PodVolumeBaseSpec
-  children: PodVolumeConfigMapSpec, PodVolumeSecretSpec
+  children: [PodVolumeConfigMapSpec](#podvolumeconfigmapspec), [PodVolumeSecretSpec](#podvolumesecretspec)
   parent types: PodTemplateSpec
   properties:
     item_map:             Nullable<Map<String, String>>
@@ -274,7 +274,7 @@ DaemonSet (abstract type):
 
 ```
 DCBaseUpdateStrategy:
-  children: DCRecreateStrategy, DCRollingStrategy, DCCustomStrategy
+  children: [DCRecreateStrategy](#dcrecreatestrategy), [DCRollingStrategy](#dcrollingstrategy), [DCCustomStrategy](#dccustomstrategy)
   parent types: DeploymentConfig
   properties:
     activeDeadlineSeconds: Nullable<Positive<NonZero<Integer>>>
@@ -287,7 +287,7 @@ DCBaseUpdateStrategy:
 
 ```
 Namespace (abstract type):
-  children: Project
+  children: [Project](#project)
   metadata:
     annotations:          Map<String, String>
     labels:               Map<String, String>
@@ -466,7 +466,7 @@ DplRecreateStrategy (abstract type):
 
 ```
 DCTrigger:
-  children: DCConfigChangeTrigger, DCImageChangeTrigger
+  children: [DCConfigChangeTrigger](#dcconfigchangetrigger), [DCImageChangeTrigger](#dcimagechangetrigger)
   parent types: DeploymentConfig
   properties:
 
@@ -497,7 +497,7 @@ MatchExpressionsSelector (abstract type):
 
 ```
 ContainerProbeBaseSpec:
-  children: ContainerProbeTCPPortSpec, ContainerProbeHTTPSpec
+  children: [ContainerProbeTCPPortSpec](#containerprobetcpportspec), [ContainerProbeHTTPSpec](#containerprobehttpspec)
   parent types: ContainerSpec
   properties:
     failureThreshold:     Nullable<Positive<NonZero<Integer>>>
@@ -640,7 +640,7 @@ ContainerVolumeMountSpec (abstract type):
 
 ```
 LifeCycleProbe:
-  children: LifeCycleExec, LifeCycleHTTP
+  children: [LifeCycleExec](#lifecycleexec), [LifeCycleHTTP](#lifecyclehttp)
   parent types: LifeCycle
   properties:
 
@@ -735,7 +735,7 @@ DCRollingStrategy (abstract type):
 
 ```
 RouteDest:
-  children: RouteDestService
+  children: [RouteDestService](#routedestservice)
   parent types: Route
   properties:
     weight:               Positive<NonZero<Integer>>
@@ -770,7 +770,7 @@ ServiceAccount (abstract type):
 
 ```
 PodVolumeBaseSpec:
-  children: PodVolumeHostSpec, PodVolumeItemMapper, PodVolumePVCSpec, PodVolumeEmptyDirSpec, PodVolumeConfigMapSpec, PodVolumeSecretSpec
+  children: [PodVolumeHostSpec](#podvolumehostspec), [PodVolumeItemMapper](#podvolumeitemmapper), [PodVolumePVCSpec](#podvolumepvcspec), [PodVolumeEmptyDirSpec](#podvolumeemptydirspec), [PodVolumeConfigMapSpec](#podvolumeconfigmapspec), [PodVolumeSecretSpec](#podvolumesecretspec)
   parent types: PodTemplateSpec
   properties:
     name:                 Identifier
@@ -861,7 +861,7 @@ ContainerProbeTCPPortSpec (abstract type):
 
 ```
 ContainerEnvBaseSpec:
-  children: ContainerEnvSpec, ContainerEnvConfigMapSpec, ContainerEnvSecretSpec, ContainerEnvPodFieldSpec, ContainerEnvContainerResourceSpec
+  children: [ContainerEnvSpec](#containerenvspec), [ContainerEnvConfigMapSpec](#containerenvconfigmapspec), [ContainerEnvSecretSpec](#containerenvsecretspec), [ContainerEnvPodFieldSpec](#containerenvpodfieldspec), [ContainerEnvContainerResourceSpec](#containerenvcontainerresourcespec)
   parent types: ContainerSpec, DCCustomParams, DCLifecycleNewPod
   properties:
     name:                 EnvString
@@ -910,7 +910,7 @@ DCTagImages (abstract type):
 
 ```
 Secret (abstract type):
-  children: DockerCredentials, TLSCredentials
+  children: [DockerCredentials](#dockercredentials), [TLSCredentials](#tlscredentials)
   metadata:
     annotations:          Map<String, String>
     labels:               Map<String, String>
@@ -933,7 +933,7 @@ RouteDestPort (abstract type):
 
 ```
 BaseSelector:
-  children: MatchLabelsSelector, MatchExpressionsSelector
+  children: [MatchLabelsSelector](#matchlabelsselector), [MatchExpressionsSelector](#matchexpressionsselector)
   parent types: DaemonSet, Deployment, Job, PersistentVolumeClaim
   properties:
 
