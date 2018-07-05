@@ -11,7 +11,7 @@ from kube_types import Map, String
 # Object used to collect class definition and implement the rendering functions
 class KubeHelper(object):
     _class_name = None
-    _class_subclasses = None
+    _class_subclasses = []
     _class_superclasses = None
     _class_types = {}
     _class_is_abstract = None
@@ -65,15 +65,58 @@ class KubeHelper(object):
 
         return txt
 
-    def render_markdown(self):
-        description = '```\n{}\n```'.format(self.render_terminal())
-        
-        title = '## {}\n'.format(self._class_name)
-        if self._class_doc_link is not None:
-            title = '## [{}]({})\n'.format(self._class_name, self._class_doc_link) 
+    
+    def _get_markdown_link(self, objects):
+        return ['[{}](#{})'.format(classname, classname.lower()) for classname in objects]
 
-        if self._class_doc is not None:
-            return '{}\n{}\n\n{}\n'.format(title, self._class_doc, description)
+    def render_markdown(self):
+        # Title generation based on link
+        if self._class_doc_link is not None:
+            txt = '## [{}]({})\n'.format(self._class_name, self._class_doc_link)
         else:
-            return '{}\n{}\n'.format(title, description)
+            txt = '## {}\n'.format(self._class_name)
+
+        # Add class doc string if exists
+        if self._class_doc is not None:
+            txt += '\n{}\n---\n'.format(self._class_doc)
+
+        # Parents
+        if len(self._class_superclasses) != 0:
+            txt += '#### Parents: {}\n'.format(', '.join(self._get_markdown_link(self._class_superclasses)))
+
+        # Children
+        if len(self._class_subclasses) != 0:
+            txt += '####  Children: {}\n'.format(', '.join(self._get_markdown_link(self._class_subclasses)))
+
+        # Parent types
+        if len(self._class_parent_types) != 0:
+            txt += '####  Parent types: {}\n'.format(', '.join(sorted(self._get_markdown_link(self._class_parent_types.keys()))))
+
+        # Metadata
+        if self._class_has_metadata:
+            txt += '```\n'
+            txt += '  metadata:\n'
+            txt += '    annotations:          {}\n'.format(Map(String, String).name())
+            txt += '    labels:               {}\n'.format(Map(String, String).name())
+            txt += '```\n'
+
+        # Properties table
+        txt += '####  Properties:\n\n'
+        txt += 'Name | Type | Identifier | Abstract | Mapping\n'
+        txt += '---- | ---- | ---------- | -------- | -------\n'
+        if self._class_identifier is not None:
+            txt += '{} | {} | True | False | - \n'.format(self._class_identifier, self._class_types[self._class_identifier].name())
+            
+        for p in sorted(self._class_types.keys()):
+            if p == self._class_identifier:
+                continue
+
+            is_abstract = True if 'xf_{}'.format(p) in self._class_xf_hasattr else False
+            is_mapped = ', '.join(self._get_markdown_link(self._class_mapping[p])) if p in self._class_mapping else '-'
+
+            print(self._class_types[p])
+
+            txt += '{} | {} | False | {} | {} \n'.format(p, self._class_types[p].name(), is_abstract, is_mapped)
+
+        return txt
         
