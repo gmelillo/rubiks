@@ -7,14 +7,6 @@ from __future__ import unicode_literals
 
 from kube_types import Map, String
 
-import sys
-
-import kube_obj
-if sys.version_info[0] == 2:
-    import kube_objs
-else:
-    import kube_objs.__init__
-
 
 # Object used to collect class definition and implement the rendering functions
 class KubeHelper(object):
@@ -30,6 +22,7 @@ class KubeHelper(object):
     _class_doc = None
     _class_doc_link = None
     _class_xf_hasattr = []
+    _class_xf_detail = []
 
     def __init__(self, *args, **kwargs):
         if 'name' in kwargs:
@@ -75,7 +68,13 @@ class KubeHelper(object):
 
     
     def _get_markdown_link(self, objects):
-        return ['[{}](#{})'.format(classname, classname.lower()) for classname in objects]
+        if isinstance(objects, list):
+            return ['[{}](#{})'.format(classname, classname.lower()) for classname in objects]
+        else:
+            return '[{}](#{})'.format(objects, objects.lower())
+
+    def _docstring_formatter(self):
+        return '\n'.join([line.strip() for line in self._class_doc.split('\n')])
 
     def render_markdown(self):
         # Title generation based on link
@@ -86,7 +85,7 @@ class KubeHelper(object):
 
         # Add class doc string if exists
         if self._class_doc is not None:
-            txt += '\n{}\n---\n'.format(self._class_doc)
+            txt += '\n{}\n'.format(self._docstring_formatter())
 
         # Parents
         if len(self._class_superclasses) != 0:
@@ -109,10 +108,10 @@ class KubeHelper(object):
         # Metadata
         if self._class_has_metadata:
             txt += '#### Metadata\n'
-            txt += '```\n'
-            txt += '    annotations:          {}\n'.format(Map(String, String).name())
-            txt += '    labels:               {}\n'.format(Map(String, String).name())
-            txt += '```\n'
+            txt += 'Name | Format\n'
+            txt += '---- | ------\n'
+            txt += 'annotations | {}\n'.format(Map(String, String).name())
+            txt += 'labels | {}\n'.format(Map(String, String).name())
 
         # Properties table
         if len(self._class_types.keys()) == 0:
@@ -122,29 +121,28 @@ class KubeHelper(object):
         txt += 'Name | Type | Identifier | Type Transformation | Aliases\n'
         txt += '---- | ---- | ---------- | ------------------- | -------\n'
         if self._class_identifier is not None:
-            txt += '{} | {} | True | False | - \n'.format(self._class_identifier, self._class_types[self._class_identifier].name())
+            txt += '{} | {} | True | - | - \n'.format(self._class_identifier, self._class_types[self._class_identifier].name())
             
         for p in sorted(self._class_types.keys()):
             if p == self._class_identifier:
                 continue
 
-            xf_data = '-'
-            if p in self._class_xf_detail:
-                xf_data = self._class_xf_detail[p]
+            # Prepare Type transformation and remove special character that could ruin visualization in markdown
+            xf_data = self._class_xf_detail[p] if p in self._class_xf_detail else '-'
             xf_data = xf_data.replace('<', '&lt;').replace('>', '&gt;')
 
             is_mapped = ', '.join(self._get_markdown_link(self._class_mapping[p])) if p in self._class_mapping else '-'
 
             original_type = self._class_types[p].original_type()
-
             display_type = self._class_types[p].name().replace('<', '&lt;').replace('>', '&gt;')
+
             if original_type is not None:
                 if isinstance(original_type, list):
                     original_type = original_type[0]
                 elif isinstance(original_type, dict):
                     original_type = original_type['value']
                 classname = original_type.__name__
-                display_type = display_type.replace(classname, '[{}](#{})'.format(classname, classname.lower()))
+                display_type = display_type.replace(classname, self._get_markdown_link(classname))
             
             
             txt += '{} | {} | False | {} | {} \n'.format(p, display_type, xf_data, is_mapped)

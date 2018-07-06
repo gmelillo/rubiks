@@ -2,15 +2,15 @@
 #### Parents: 
 - [Secret](#secret)
 #### Metadata
-```
-    annotations:          Map<String, String>
-    labels:               Map<String, String>
-```
+Name | Format
+---- | ------
+annotations | Map<String, String>
+labels | Map<String, String>
 ####  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
 ---- | ---- | ---------- | ------------------- | -------
-name | Identifier | True | False | - 
+name | Identifier | True | - | - 
 secrets | Map&lt;String, String&gt; | False | - | - 
 tls_cert | String | False | - | - 
 tls_key | String | False | - | - 
@@ -20,15 +20,15 @@ type | NonEmpty&lt;String&gt; | False | - | -
 - [ClusterIPService](#clusteripservice)
 - [AWSLoadBalancerService](#awsloadbalancerservice)
 #### Metadata
-```
-    annotations:          Map<String, String>
-    labels:               Map<String, String>
-```
+Name | Format
+---- | ------
+annotations | Map<String, String>
+labels | Map<String, String>
 ####  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
 ---- | ---- | ---------- | ------------------- | -------
-name | Identifier | True | False | - 
+name | Identifier | True | - | - 
 ports | NonEmpty&lt;List&lt;[ServicePort](#serviceport)&gt;&gt; | False | &lt;unknown transformation&gt; | - 
 selector | NonEmpty&lt;Map&lt;String, String&gt;&gt; | False | &lt;unknown transformation&gt; | - 
 sessionAffinity | Nullable&lt;Enum('ClientIP', 'None')&gt; | False | - | - 
@@ -36,15 +36,15 @@ sessionAffinity | Nullable&lt;Enum('ClientIP', 'None')&gt; | False | - | -
 #### Parents: 
 - [Secret](#secret)
 #### Metadata
-```
-    annotations:          Map<String, String>
-    labels:               Map<String, String>
-```
+Name | Format
+---- | ------
+annotations | Map<String, String>
+labels | Map<String, String>
 ####  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
 ---- | ---- | ---------- | ------------------- | -------
-name | Identifier | True | False | - 
+name | Identifier | True | - | - 
 dockers | Map&lt;String, Map&lt;String, String&gt;&gt; | False | - | - 
 secrets | Map&lt;String, String&gt; | False | - | - 
 type | NonEmpty&lt;String&gt; | False | - | - 
@@ -58,27 +58,27 @@ type | NonEmpty&lt;String&gt; | False | - | -
 #### Parents: 
 - [RoleBase](#rolebase)
 #### Metadata
-```
-    annotations:          Map<String, String>
-    labels:               Map<String, String>
-```
+Name | Format
+---- | ------
+annotations | Map<String, String>
+labels | Map<String, String>
 ####  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
 ---- | ---- | ---------- | ------------------- | -------
-name | Identifier | True | False | - 
+name | Identifier | True | - | - 
 rules | NonEmpty&lt;List&lt;[PolicyRule](#policyrule)&gt;&gt; | False | - | - 
 ## Group
 #### Metadata
-```
-    annotations:          Map<String, String>
-    labels:               Map<String, String>
-```
+Name | Format
+---- | ------
+annotations | Map<String, String>
+labels | Map<String, String>
 ####  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
 ---- | ---- | ---------- | ------------------- | -------
-name | Identifier | True | False | - 
+name | Identifier | True | - | - 
 users | NonEmpty&lt;List&lt;UserIdentifier&gt;&gt; | False | - | - 
 ## RouteTLS
 ####  Parent types: 
@@ -106,15 +106,15 @@ uidRangeMax | Nullable&lt;Positive&lt;NonZero&lt;Integer&gt;&gt;&gt; | False | -
 uidRangeMin | Nullable&lt;Positive&lt;NonZero&lt;Integer&gt;&gt;&gt; | False | - | - 
 ## PersistentVolumeClaim
 #### Metadata
-```
-    annotations:          Map<String, String>
-    labels:               Map<String, String>
-```
+Name | Format
+---- | ------
+annotations | Map<String, String>
+labels | Map<String, String>
 ####  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
 ---- | ---- | ---------- | ------------------- | -------
-name | Identifier | True | False | - 
+name | Identifier | True | - | - 
 accessModes | List&lt;Enum('ReadWriteOnce', 'ReadOnlyMany', 'ReadWriteMany')&gt; | False | - | - 
 request | Memory | False | - | - 
 selector | Nullable&lt;[BaseSelector](#baseselector)&gt; | False | - | - 
@@ -152,26 +152,26 @@ supplementalGroups | Nullable&lt;List&lt;Integer&gt;&gt; | False | - | -
 #### Parents: 
 - [Namespace](#namespace)
 #### Metadata
-```
-    annotations:          Map<String, String>
-    labels:               Map<String, String>
-```
+Name | Format
+---- | ------
+annotations | Map<String, String>
+labels | Map<String, String>
 ####  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
 ---- | ---- | ---------- | ------------------- | -------
-name | Identifier | True | False | - 
+name | Identifier | True | - | - 
 ## PersistentVolume
 #### Metadata
-```
-    annotations:          Map<String, String>
-    labels:               Map<String, String>
-```
+Name | Format
+---- | ------
+annotations | Map<String, String>
+labels | Map<String, String>
 ####  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
 ---- | ---- | ---------- | ------------------- | -------
-name | Identifier | True | False | - 
+name | Identifier | True | - | - 
 accessModes | List&lt;Enum('ReadWriteOnce', 'ReadOnlyMany', 'ReadWriteMany')&gt; | False | - | - 
 awsElasticBlockStore | Nullable&lt;[AWSElasticBlockStore](#awselasticblockstore)&gt; | False | - | - 
 capacity | Memory | False | - | - 
@@ -179,15 +179,15 @@ claimRef | Nullable&lt;[PersistentVolumeRef](#persistentvolumeref)&gt; | False |
 persistentVolumeReclaimPolicy | Nullable&lt;Enum('Retain', 'Recycle', 'Delete')&gt; | False | - | - 
 ## DeploymentConfig
 #### Metadata
-```
-    annotations:          Map<String, String>
-    labels:               Map<String, String>
-```
+Name | Format
+---- | ------
+annotations | Map<String, String>
+labels | Map<String, String>
 ####  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
 ---- | ---- | ---------- | ------------------- | -------
-name | Identifier | True | False | - 
+name | Identifier | True | - | - 
 minReadySeconds | Nullable&lt;Positive&lt;NonZero&lt;Integer&gt;&gt;&gt; | False | - | - 
 paused | Nullable&lt;Boolean&gt; | False | - | - 
 pod_template | [PodTemplateSpec](#podtemplatespec) | False | - | - 
@@ -256,15 +256,15 @@ name | Identifier | False | - | -
 #### Parents: 
 - [SelectorsPreProcessMixin](#selectorspreprocessmixin)
 #### Metadata
-```
-    annotations:          Map<String, String>
-    labels:               Map<String, String>
-```
+Name | Format
+---- | ------
+annotations | Map<String, String>
+labels | Map<String, String>
 ####  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
 ---- | ---- | ---------- | ------------------- | -------
-name | Identifier | True | False | - 
+name | Identifier | True | - | - 
 pod_template | [PodTemplateSpec](#podtemplatespec) | False | - | - 
 selector | Nullable&lt;[BaseSelector](#baseselector)&gt; | False | &lt;unknown transformation&gt; | - 
 ## DCBaseUpdateStrategy
@@ -286,15 +286,15 @@ resources | Nullable&lt;[ContainerResourceSpec](#containerresourcespec)&gt; | Fa
 ####  Children: 
 - [Project](#project)
 #### Metadata
-```
-    annotations:          Map<String, String>
-    labels:               Map<String, String>
-```
+Name | Format
+---- | ------
+annotations | Map<String, String>
+labels | Map<String, String>
 ####  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
 ---- | ---- | ---------- | ------------------- | -------
-name | Identifier | True | False | - 
+name | Identifier | True | - | - 
 ## ContainerEnvSpec
 #### Parents: 
 - [ContainerEnvBaseSpec](#containerenvbasespec)
@@ -349,30 +349,30 @@ user | Nullable&lt;String&gt; | False | - | -
 - [RoleBindingBase](#rolebindingbase)
 - [RoleBindingXF](#rolebindingxf)
 #### Metadata
-```
-    annotations:          Map<String, String>
-    labels:               Map<String, String>
-```
+Name | Format
+---- | ------
+annotations | Map<String, String>
+labels | Map<String, String>
 ####  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
 ---- | ---- | ---------- | ------------------- | -------
-name | Identifier | True | False | - 
+name | Identifier | True | - | - 
 roleRef | [RoleRef](#roleref) | False | &lt;unknown transformation&gt; | - 
 subjects | NonEmpty&lt;List&lt;[RoleSubject](#rolesubject)&gt;&gt; | False | &lt;unknown transformation&gt; | - 
 ## AWSLoadBalancerService
 #### Parents: 
 - [Service](#service)
 #### Metadata
-```
-    annotations:          Map<String, String>
-    labels:               Map<String, String>
-```
+Name | Format
+---- | ------
+annotations | Map<String, String>
+labels | Map<String, String>
 ####  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
 ---- | ---- | ---------- | ------------------- | -------
-name | Identifier | True | False | - 
+name | Identifier | True | - | - 
 aws-load-balancer-backend-protocol | Nullable&lt;Identifier&gt; | False | - | - 
 aws-load-balancer-ssl-cert | Nullable&lt;ARN&gt; | False | - | - 
 externalTrafficPolicy | Nullable&lt;Enum('Cluster', 'Local')&gt; | False | - | - 
@@ -381,15 +381,15 @@ selector | NonEmpty&lt;Map&lt;String, String&gt;&gt; | False | &lt;unknown trans
 sessionAffinity | Nullable&lt;Enum('ClientIP', 'None')&gt; | False | - | - 
 ## Job
 #### Metadata
-```
-    annotations:          Map<String, String>
-    labels:               Map<String, String>
-```
+Name | Format
+---- | ------
+annotations | Map<String, String>
+labels | Map<String, String>
 ####  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
 ---- | ---- | ---------- | ------------------- | -------
-name | Identifier | True | False | - 
+name | Identifier | True | - | - 
 activeDeadlineSeconds | Nullable&lt;Positive&lt;Integer&gt;&gt; | False | - | - 
 completions | Nullable&lt;Positive&lt;NonZero&lt;Integer&gt;&gt;&gt; | False | - | - 
 manualSelector | Nullable&lt;Boolean&gt; | False | - | - 
@@ -442,7 +442,7 @@ maxUnavailable | SurgeSpec | False | - | -
 
 Name | Type | Identifier | Type Transformation | Aliases
 ---- | ---- | ---------- | ------------------- | -------
-name | Identifier | True | False | - 
+name | Identifier | True | - | - 
 args | Nullable&lt;List&lt;String&gt;&gt; | False | - | - 
 command | Nullable&lt;List&lt;String&gt;&gt; | False | - | - 
 env | Nullable&lt;List&lt;[ContainerEnvBaseSpec](#containerenvbasespec)&gt;&gt; | False | &lt;unknown transformation&gt; | - 
@@ -522,27 +522,27 @@ Name | Type | Identifier | Type Transformation | Aliases
 name | Identifier | False | - | - 
 ## PolicyBinding
 #### Metadata
-```
-    annotations:          Map<String, String>
-    labels:               Map<String, String>
-```
+Name | Format
+---- | ------
+annotations | Map<String, String>
+labels | Map<String, String>
 ####  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
 ---- | ---- | ---------- | ------------------- | -------
-name | ColonIdentifier | True | False | - 
+name | ColonIdentifier | True | - | - 
 roleBindings | List&lt;[PolicyBindingRoleBinding](#policybindingrolebinding)&gt; | False | &lt;unknown transformation&gt; | - 
 ## ConfigMap
 #### Metadata
-```
-    annotations:          Map<String, String>
-    labels:               Map<String, String>
-```
+Name | Format
+---- | ------
+annotations | Map<String, String>
+labels | Map<String, String>
 ####  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
 ---- | ---- | ---------- | ------------------- | -------
-name | Identifier | True | False | - 
+name | Identifier | True | - | - 
 files | Map&lt;String, String&gt; | False | - | - 
 ## SCCGroups
 ####  Parent types: 
@@ -578,15 +578,15 @@ cpu | Nullable&lt;Positive&lt;NonZero&lt;Number&gt;&gt;&gt; | False | &lt;unknow
 memory | Nullable&lt;Memory&gt; | False | - | - 
 ## StorageClass
 #### Metadata
-```
-    annotations:          Map<String, String>
-    labels:               Map<String, String>
-```
+Name | Format
+---- | ------
+annotations | Map<String, String>
+labels | Map<String, String>
 ####  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
 ---- | ---- | ---------- | ------------------- | -------
-name | Identifier | True | False | - 
+name | Identifier | True | - | - 
 parameters | Map&lt;String, String&gt; | False | - | - 
 provisioner | String | False | - | - 
 ## DCRollingParams
@@ -661,10 +661,10 @@ ns | Nullable&lt;Identifier&gt; | False | - | -
 - [Job](#job)
 - [ReplicationController](#replicationcontroller)
 #### Metadata
-```
-    annotations:          Map<String, String>
-    labels:               Map<String, String>
-```
+Name | Format
+---- | ------
+annotations | Map<String, String>
+labels | Map<String, String>
 ####  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
@@ -684,15 +684,15 @@ terminationGracePeriodSeconds | Nullable&lt;Positive&lt;Integer&gt;&gt; | False 
 volumes | Nullable&lt;List&lt;[PodVolumeBaseSpec](#podvolumebasespec)&gt;&gt; | False | - | - 
 ## User
 #### Metadata
-```
-    annotations:          Map<String, String>
-    labels:               Map<String, String>
-```
+Name | Format
+---- | ------
+annotations | Map<String, String>
+labels | Map<String, String>
 ####  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
 ---- | ---- | ---------- | ------------------- | -------
-name | UserIdentifier | True | False | - 
+name | UserIdentifier | True | - | - 
 fullName | Nullable&lt;String&gt; | False | - | - 
 identities | NonEmpty&lt;List&lt;NonEmpty&lt;String&gt;&gt;&gt; | False | - | - 
 ## ContainerEnvConfigMapSpec
@@ -760,15 +760,15 @@ fieldPath | Enum('metadata.name', 'metadata.namespace', 'metadata.labels', 'meta
 name | EnvString | False | - | - 
 ## ServiceAccount
 #### Metadata
-```
-    annotations:          Map<String, String>
-    labels:               Map<String, String>
-```
+Name | Format
+---- | ------
+annotations | Map<String, String>
+labels | Map<String, String>
 ####  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
 ---- | ---- | ---------- | ------------------- | -------
-name | Identifier | True | False | - 
+name | Identifier | True | - | - 
 imagePullSecrets | Nullable&lt;List&lt;[SAImgPullSecretSubject](#saimgpullsecretsubject)&gt;&gt; | False | &lt;unknown transformation&gt; | - 
 secrets | Nullable&lt;List&lt;[SASecretSubject](#sasecretsubject)&gt;&gt; | False | &lt;unknown transformation&gt; | - 
 ## PodVolumeBaseSpec
@@ -790,15 +790,15 @@ name | Identifier | False | - | -
 #### Parents: 
 - [RoleBase](#rolebase)
 #### Metadata
-```
-    annotations:          Map<String, String>
-    labels:               Map<String, String>
-```
+Name | Format
+---- | ------
+annotations | Map<String, String>
+labels | Map<String, String>
 ####  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
 ---- | ---- | ---------- | ------------------- | -------
-name | Identifier | True | False | - 
+name | Identifier | True | - | - 
 rules | NonEmpty&lt;List&lt;[PolicyRule](#policyrule)&gt;&gt; | False | - | - 
 ## DCLifecycleHook
 ####  Parent types: 
@@ -815,15 +815,15 @@ tagImages | Nullable&lt;[DCTagImages](#dctagimages)&gt; | False | - | -
 #### Parents: 
 - [Service](#service)
 #### Metadata
-```
-    annotations:          Map<String, String>
-    labels:               Map<String, String>
-```
+Name | Format
+---- | ------
+annotations | Map<String, String>
+labels | Map<String, String>
 ####  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
 ---- | ---- | ---------- | ------------------- | -------
-name | Identifier | True | False | - 
+name | Identifier | True | - | - 
 clusterIP | Nullable&lt;IPv4&gt; | False | - | - 
 ports | NonEmpty&lt;List&lt;[ServicePort](#serviceport)&gt;&gt; | False | &lt;unknown transformation&gt; | - 
 selector | NonEmpty&lt;Map&lt;String, String&gt;&gt; | False | &lt;unknown transformation&gt; | - 
@@ -926,15 +926,15 @@ toUid | Nullable&lt;String&gt; | False | - | -
 - [DockerCredentials](#dockercredentials)
 - [TLSCredentials](#tlscredentials)
 #### Metadata
-```
-    annotations:          Map<String, String>
-    labels:               Map<String, String>
-```
+Name | Format
+---- | ------
+annotations | Map<String, String>
+labels | Map<String, String>
 ####  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
 ---- | ---- | ---------- | ------------------- | -------
-name | Identifier | True | False | - 
+name | Identifier | True | - | - 
 secrets | Map&lt;String, String&gt; | False | - | - 
 type | NonEmpty&lt;String&gt; | False | - | - 
 ## RouteDestPort
@@ -996,15 +996,15 @@ fsType | Enum('ext4') | False | - | -
 volumeID | AWSVolID | False | - | - 
 ## ReplicationController
 #### Metadata
-```
-    annotations:          Map<String, String>
-    labels:               Map<String, String>
-```
+Name | Format
+---- | ------
+annotations | Map<String, String>
+labels | Map<String, String>
 ####  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
 ---- | ---- | ---------- | ------------------- | -------
-name | Identifier | True | False | - 
+name | Identifier | True | - | - 
 minReadySeconds | Nullable&lt;Positive&lt;NonZero&lt;Integer&gt;&gt;&gt; | False | - | - 
 pod_template | [PodTemplateSpec](#podtemplatespec) | False | - | - 
 replicas | Positive&lt;NonZero&lt;Integer&gt;&gt; | False | - | - 
@@ -1020,22 +1020,21 @@ name | Identifier | False | - | -
 ## [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
 
 
-    A Deployment controller provides declarative updates for Pods and ReplicaSets.
+A Deployment controller provides declarative updates for Pods and ReplicaSets.
 
-    You describe a desired state in a Deployment object, and the Deployment controller changes the actual state to the desired state at a controlled rate.
-    You can define Deployments to create new ReplicaSets, or to remove existing Deployments and adopt all their resources with new Deployments.
-    
----
+You describe a desired state in a Deployment object, and the Deployment controller changes the actual state to the desired state at a controlled rate.
+You can define Deployments to create new ReplicaSets, or to remove existing Deployments and adopt all their resources with new Deployments.
+
 #### Metadata
-```
-    annotations:          Map<String, String>
-    labels:               Map<String, String>
-```
+Name | Format
+---- | ------
+annotations | Map<String, String>
+labels | Map<String, String>
 ####  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
 ---- | ---- | ---------- | ------------------- | -------
-name | Identifier | True | False | - 
+name | Identifier | True | - | - 
 minReadySeconds | Nullable&lt;Positive&lt;NonZero&lt;Integer&gt;&gt;&gt; | False | - | - 
 paused | Nullable&lt;Boolean&gt; | False | - | - 
 pod_template | [PodTemplateSpec](#podtemplatespec) | False | - | - 
@@ -1067,15 +1066,15 @@ name | String | False | - | -
 ns | Nullable&lt;Identifier&gt; | False | - | - 
 ## SecurityContextConstraints
 #### Metadata
-```
-    annotations:          Map<String, String>
-    labels:               Map<String, String>
-```
+Name | Format
+---- | ------
+annotations | Map<String, String>
+labels | Map<String, String>
 ####  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
 ---- | ---- | ---------- | ------------------- | -------
-name | Identifier | True | False | - 
+name | Identifier | True | - | - 
 allowHostDirVolumePlugin | Boolean | False | - | - 
 allowHostIPC | Boolean | False | - | - 
 allowHostNetwork | Boolean | False | - | - 
@@ -1097,15 +1096,15 @@ users | List&lt;SystemIdentifier&gt; | False | - | -
 volumes | List&lt;Enum('configMap', 'downwardAPI', 'emptyDir', 'hostPath', 'nfs', 'persistentVolumeClaim', 'secret', '*')&gt; | False | - | - 
 ## Route
 #### Metadata
-```
-    annotations:          Map<String, String>
-    labels:               Map<String, String>
-```
+Name | Format
+---- | ------
+annotations | Map<String, String>
+labels | Map<String, String>
 ####  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
 ---- | ---- | ---------- | ------------------- | -------
-name | Identifier | True | False | - 
+name | Identifier | True | - | - 
 host | Domain | False | - | - 
 port | [RouteDestPort](#routedestport) | False | - | - 
 tls | Nullable&lt;[RouteTLS](#routetls)&gt; | False | - | - 
@@ -1152,15 +1151,15 @@ preStop | Nullable&lt;[LifeCycleProbe](#lifecycleprobe)&gt; | False | - | -
 - [RoleBindingBase](#rolebindingbase)
 - [RoleBindingXF](#rolebindingxf)
 #### Metadata
-```
-    annotations:          Map<String, String>
-    labels:               Map<String, String>
-```
+Name | Format
+---- | ------
+annotations | Map<String, String>
+labels | Map<String, String>
 ####  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
 ---- | ---- | ---------- | ------------------- | -------
-name | SystemIdentifier | True | False | - 
+name | SystemIdentifier | True | - | - 
 roleRef | [RoleRef](#roleref) | False | &lt;unknown transformation&gt; | - 
 subjects | NonEmpty&lt;List&lt;[RoleSubject](#rolesubject)&gt;&gt; | False | &lt;unknown transformation&gt; | - 
 ## MatchLabelsSelector
