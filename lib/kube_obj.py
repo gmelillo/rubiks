@@ -326,30 +326,30 @@ class KubeBaseObj(object):
 
             return ret
 
-        ret_help._class_subclasses = list(map(lambda x: x.__name__, cls.get_subclasses(non_abstract=False, include_self=False)))
-        ret_help._class_superclasses = list(map(lambda x: x.__name__, _rec_superclasses(cls)))
+        ret_help.class_subclasses = list(map(lambda x: x.__name__, cls.get_subclasses(non_abstract=False, include_self=False)))
+        ret_help.class_superclasses = list(map(lambda x: x.__name__, _rec_superclasses(cls)))
 
-        ret_help._class_types = cls.resolve_types()
+        ret_help.class_types = cls.resolve_types()
 
-        ret_help._class_is_abstract = '' if cls.is_abstract_type() else ' (abstract type)'
-        ret_help._class_identifier = cls.identifier if hasattr(cls, 'identifier') and cls.identifier is not None else None
+        ret_help.class_is_abstract = '' if cls.is_abstract_type() else ' (abstract type)'
+        ret_help.class_identifier = cls.identifier if hasattr(cls, 'identifier') and cls.identifier is not None else None
 
         mapping = cls._find_defaults('_map')
-        ret_help._class_mapping = {}
+        ret_help.class_mapping = {}
         for d in mapping:
-            if mapping[d] not in ret_help._class_mapping:
-                ret_help._class_mapping[mapping[d]] = []
-            ret_help._class_mapping[mapping[d]].append(d)
+            if mapping[d] not in ret_help.class_mapping:
+                ret_help.class_mapping[mapping[d]] = []
+            ret_help.class_mapping[mapping[d]].append(d)
 
-        ret_help._class_parent_types = cls._parent_types
-        ret_help._class_has_metadata = cls.has_metadata
+        ret_help.class_parent_types = cls._parent_types
+        ret_help.class_has_metadata = cls.has_metadata
 
-        ret_help._class_xf_detail = {}
-        for p in ret_help._class_types:
+        ret_help.class_xf_detail = {}
+        for p in ret_help.class_types:
             if hasattr(cls, 'xf_' + p):
-                ret_help._class_xf_detail[p] = '<unknown transformation>'
+                ret_help.class_xf_detail[p] = '<unknown transformation>'
                 if hasattr(getattr(cls, 'xf_' + p), '__doc__') and getattr(cls, 'xf_' + p).__doc__ is not None and len(getattr(cls, 'xf_' + p).__doc__):
-                    ret_help._class_xf_detail[p] = getattr(cls, 'xf_' + p).__doc__
+                    ret_help.class_xf_detail[p] = getattr(cls, 'xf_' + p).__doc__
 
         return ret_help
 
