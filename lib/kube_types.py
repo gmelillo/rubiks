@@ -122,6 +122,10 @@ class Nullable(KubeType):
 
 
 class Boolean(KubeType):
+    """
+    Boolean, or boolean logic, is a subset of algebra used for creating true/false statements. 
+    Boolean expressions use the operators AND, OR, XOR, and NOT to compare values and return a true or false result. 
+    """
     validation_text = "Expected boolean"
 
     def do_check(self, value, path):
@@ -129,6 +133,13 @@ class Boolean(KubeType):
 
 
 class Enum(KubeType):
+    """
+    Enum, short for "enumerated," is a data type that consists of predefined values. A constant or variable defined as an enum can store one of the values listed in the enum declaration.
+
+    **Example***
+
+    `Enum('Value1', 'Value2', 'Value3')`
+    """
     def __init__(self, *args):
         self.enums = args
 
@@ -145,6 +156,10 @@ class Enum(KubeType):
 
 
 class Integer(KubeType):
+    """
+    An integer is a whole number (not a fraction) that can be positive, negative, or zero. 
+    Therefore, the numbers 10, 0, -25, and 5,148 are all integers. Unlike floating point numbers, integers cannot have decimal places.
+    """
     validation_text = "Expected integer"
 
     def do_check(self, value, path):
@@ -156,6 +171,9 @@ class Integer(KubeType):
 
 
 class Number(KubeType):
+    """
+    An integer is a whole number (not a fraction) that can be positive, negative, floating or zero. 
+    """
     validation_text = "Expected number"
 
     def do_check(self, value, path):
@@ -167,6 +185,9 @@ class Number(KubeType):
 
 
 class Positive(KubeType):
+    """
+    Define a number that needs to be positive (0 is included as positive)
+    """
     validation_text = "Expected positive"
     wrapper = True
 
@@ -175,6 +196,10 @@ class Positive(KubeType):
 
 
 class NonZero(KubeType):
+    """
+    Represent any number that is not 0.
+    Will be accepted positive and negative of any kind.
+    """
     validation_text = "Expected non-zero"
     wrapper = True
 

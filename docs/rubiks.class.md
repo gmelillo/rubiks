@@ -187,8 +187,10 @@ The content of this part of the ARN varies by service. It often includes an indi
 
 ## Boolean
 
-TODO: Description is still missing from the class docstring.
-Stay tuned to have more hint about this variable.
+
+Boolean, or boolean logic, is a subset of algebra used for creating true/false statements.
+Boolean expressions use the operators AND, OR, XOR, and NOT to compare values and return a true or false result.
+
 
 ## CaseIdentifier
 
@@ -207,8 +209,13 @@ Stay tuned to have more hint about this variable.
 
 ## Enum
 
-TODO: Description is still missing from the class docstring.
-Stay tuned to have more hint about this variable.
+
+Enum, short for "enumerated," is a data type that consists of predefined values. A constant or variable defined as an enum can store one of the values listed in the enum declaration.
+
+**Example***
+
+`Enum('Value1', 'Value2', 'Value3')`
+
 
 ## IP
 
@@ -227,13 +234,16 @@ Stay tuned to have more hint about this variable.
 
 ## Integer
 
-TODO: Description is still missing from the class docstring.
-Stay tuned to have more hint about this variable.
+
+An integer is a whole number (not a fraction) that can be positive, negative, or zero.
+Therefore, the numbers 10, 0, -25, and 5,148 are all integers. Unlike floating point numbers, integers cannot have decimal places.
+
 
 ## Number
 
-TODO: Description is still missing from the class docstring.
-Stay tuned to have more hint about this variable.
+
+An integer is a whole number (not a fraction) that can be positive, negative, floating or zero.
+
 
 ## Path
 
