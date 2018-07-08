@@ -7,3 +7,6 @@ __pycache__
 
 # yaml build directory
 build
+
+# Visual Studio Code
+.vscode/
