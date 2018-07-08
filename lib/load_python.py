@@ -250,7 +250,6 @@ class PythonBaseFile(object):
             cls._kube_type = {}
 
             for k in kube_types.__dict__:
-                print('{} - {} - {}'.format(kube_types.__dict__[k], k, isinstance(kube_types.__dict__[k], type)))
                 if isinstance(kube_types.__dict__[k], type) and k not in ('KubeType', 'SurgeCheck'):
                     try:
                         if hasattr(kube_types.__dict__[k], 'wrapper'):
@@ -260,8 +259,8 @@ class PythonBaseFile(object):
                             else:
                                 if isinstance(kube_types.__dict__[k](), kube_types.KubeType):
                                     cls._kube_type[k] = kube_types.__dict__[k]
-                    except Exception as e:
-                        print(e)
+                    except:
+                        pass
 
         return cls._kube_type
 
