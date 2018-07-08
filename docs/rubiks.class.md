@@ -22,8 +22,13 @@ This document is automatically generated using the command `docgen` and describe
   - [IPv4](#ipv4)
   - [Identifier](#identifier)
   - [Integer](#integer)
+  - [List](#list)
+  - [NonEmpty](#nonempty)
+  - [NonZero](#nonzero)
+  - [Nullable](#nullable)
   - [Number](#number)
   - [Path](#path)
+  - [Positive](#positive)
   - [String](#string)
   - [SurgeSpec](#surgespec)
   - [SystemIdentifier](#systemidentifier)
@@ -239,6 +244,28 @@ An integer is a whole number (not a fraction) that can be positive, negative, or
 Therefore, the numbers 10, 0, -25, and 5,148 are all integers. Unlike floating point numbers, integers cannot have decimal places.
 
 
+## List
+
+TODO: Description is still missing from the class docstring.
+Stay tuned to have more hint about this variable.
+
+## NonEmpty
+
+TODO: Description is still missing from the class docstring.
+Stay tuned to have more hint about this variable.
+
+## NonZero
+
+
+Represent any number that is not 0.
+Will be accepted positive and negative of any kind.
+
+
+## Nullable
+
+TODO: Description is still missing from the class docstring.
+Stay tuned to have more hint about this variable.
+
 ## Number
 
 
@@ -249,6 +276,12 @@ An integer is a whole number (not a fraction) that can be positive, negative, fl
 
 TODO: Description is still missing from the class docstring.
 Stay tuned to have more hint about this variable.
+
+## Positive
+
+
+Define a number that needs to be positive (0 is included as positive)
+
 
 ## String
 
