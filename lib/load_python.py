@@ -250,7 +250,7 @@ class PythonBaseFile(object):
             cls._kube_type = {}
 
             for k in kube_types.__dict__:
-                if isinstance(kube_types.__dict__[k], type) and k not in ('KubeType'):
+                if isinstance(kube_types.__dict__[k], type) and k not in ('KubeType', 'Object'):
                     try:
                         if isinstance(kube_objs.__dict__[k](), KubeType):
                             cls._kube_type[k] = kube_types.__dict__[k]

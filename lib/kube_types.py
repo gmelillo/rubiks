@@ -492,6 +492,17 @@ class List(KubeType):
 
 
 class Map(KubeType):
+    """
+    Enforce a Map to be composed by pre-defined types specified on the initialization.
+
+    **Esample:**
+
+    `Map(String, String)`
+    `Map(Int, String)`
+    `Map(Int, Int)`
+
+    This will allow to perform some authomatic checks inside the imput of an Object
+    """
     def __init__(self, key, value):
         self.key = self.__class__.construct_arg(key)
         self.value = self.__class__.construct_arg(value)

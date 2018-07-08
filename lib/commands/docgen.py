@@ -24,6 +24,9 @@ class Command_docgen(Command, CommandRepositoryBase):
         objs = load_python.PythonBaseFile.get_kube_objs()
         types = load_python.PythonBaseFile.get_kube_types()
         formats = load_python.PythonBaseFile.get_kube_vartypes()
+
+        additional_links = types.keys() + formats.keys()
+        print(additional_links)
         
         r = self.get_repository()
 
@@ -52,7 +55,7 @@ class Command_docgen(Command, CommandRepositoryBase):
         md += '\n# Objects\n\n'
         for oname in sorted(objs.keys()):
             header += '  - [{}](#{})\n'.format(oname, oname.lower())
-            md += objs[oname].get_help().render_markdown()
+            md += objs[oname].get_help().render_markdown(links=additional_links)
 
         with open(os.path.join(r.basepath, 'docs/rubiks.class.md'), 'w') as f:
             f.write(header.encode('utf-8'))

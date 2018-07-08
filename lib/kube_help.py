@@ -118,7 +118,15 @@ class KubeHelper(object):
     def _docstring_formatter(self):
         return '\n'.join([line.strip() for line in self.class_doc.split('\n')])
 
-    def render_markdown(self):
+    def _decorate_obj_links(self, display, links):
+        print(display)
+        for link in links:
+            display = display.replace(link, self._get_markdown_link(link))
+        print(display)
+
+        return display
+
+    def render_markdown(self, links=[]):
         # Title generation based on link
         if self.class_doc_link is not None:
             txt = '## [{}]({})\n'.format(self.class_name, self.class_doc_link)
@@ -184,7 +192,8 @@ class KubeHelper(object):
                 elif isinstance(original_type, dict):
                     original_type = original_type['value']
                 classname = original_type.__name__
-                display_type = display_type.replace(classname, self._get_markdown_link(classname))
+                display_type = self._decorate_obj_links(display=display_type, links=(links + [classname]))
+                # display_type = display_type.replace(classname, self._get_markdown_link(classname))
             
             
             txt += '{} | {} | False | {} | {} \n'.format(p, display_type, xf_data, is_mapped)
