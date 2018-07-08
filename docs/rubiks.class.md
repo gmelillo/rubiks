@@ -153,8 +153,28 @@ Stay tuned to have more hint about this variable.
 
 ## ARN
 
-TODO: Description is still missing from the class docstring.
-Stay tuned to have more hint about this variable.
+
+Amazon Resource Names (ARNs) uniquely identify AWS resources.
+
+The following are the general formats for ARNs; the specific components and values used depend on the AWS service.
+
+```
+arn:partition:service:region:account-id:resource
+arn:partition:service:region:account-id:resourcetype/resource
+arn:partition:service:region:account-id:resourcetype:resource
+```
+
+*partition*
+The partition that the resource is in. For standard AWS regions, the partition is aws. If you have resources in other partitions, the partition is aws-partitionname. For example, the partition for resources in the China (Beijing) region is aws-cn.
+*service*
+The service namespace that identifies the AWS product (for example, Amazon S3, IAM, or Amazon RDS). For a list of namespaces, see AWS Service Namespaces.
+*region*
+The region the resource resides in. Note that the ARNs for some resources do not require a region, so this component might be omitted.
+*account*
+The ID of the AWS account that owns the resource, without the hyphens. For example, 123456789012. Note that the ARNs for some resources don't require an account number, so this component might be omitted.
+*resource, resourcetype:resource, or resourcetype/resource*
+The content of this part of the ARN varies by service. It often includes an indicator of the type of resource—for example, an IAM user or Amazon RDS database —followed by a slash (/) or a colon (:), followed by the resource name itself. Some services allow paths for resource names, as described in Paths in ARNs.
+
 
 ## Boolean
 

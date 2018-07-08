@@ -55,5 +55,5 @@ class Command_docgen(Command, CommandRepositoryBase):
             md += objs[oname].get_help().render_markdown()
 
         with open(os.path.join(r.basepath, 'docs/rubiks.class.md'), 'w') as f:
-            f.write(header)
-            f.write(md)
+            f.write(header.encode('utf-8'))
+            f.write(md.encode('utf-8'))
