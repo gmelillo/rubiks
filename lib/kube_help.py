@@ -158,8 +158,8 @@ class KubeHelper(object):
             txt += '### Metadata\n'
             txt += 'Name | Format\n'
             txt += '---- | ------\n'
-            txt += 'annotations | {}\n'.format(self._decorate_obj_links(Map(String, String).name(), links))
-            txt += 'labels | {}\n'.format(self._decorate_obj_links(Map(String, String).name(), links))
+            txt += 'annotations | {}\n'.format(Map(String, String).name(md=True))
+            txt += 'labels | {}\n'.format(Map(String, String).name(md=True))
 
         # Properties table
         if len(self.class_types.keys()) == 0:
@@ -183,7 +183,7 @@ class KubeHelper(object):
             is_mapped = ', '.join(self._get_markdown_link(self.class_mapping[p])) if p in self.class_mapping else '-'
 
             original_type = self.class_types[p].original_type()
-            display_type = self.class_types[p].name().replace('<', '&lt;').replace('>', '&gt;')
+            display_type = self.class_types[p].name(md=True).replace('<', '&lt;').replace('>', '&gt;')
 
             if original_type is not None:
                 if isinstance(original_type, list):
@@ -192,7 +192,7 @@ class KubeHelper(object):
                     original_type = original_type['value']
                 classname = original_type.__name__
                 display_type = display_type.replace(classname, self._get_markdown_link(classname))
-            display_type = self._decorate_obj_links(display=display_type, links=links)
+            # display_type = self._decorate_obj_links(display=display_type, links=links)
             
             
             txt += '{} | {} | False | {} | {} \n'.format(p, display_type, xf_data, is_mapped)
