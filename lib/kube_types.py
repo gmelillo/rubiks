@@ -52,6 +52,12 @@ class KubeType(object):
 
         return ret
 
+    @classmethod
+    def get_description(cls):
+        if cls.__doc__ is not None and cls.__doc__ is not '':
+            return '\n'.join([line.strip() for line in cls.__doc__.split('\n')])
+        return 'TODO: Description is still missing from the class docstring.\nStay tuned to have more hint about this variable.'
+
     def original_type(self):
         if self.wrapper:
             return self.wrap.original_type()

@@ -131,25 +131,25 @@ class KubeHelper(object):
 
         # Parents
         if len(self.class_superclasses) != 0:
-            txt += '#### Parents: \n'
+            txt += '### Parents: \n'
             for obj in self._get_markdown_link(self.class_superclasses):
                 txt += '- {}\n'.format(obj)
 
         # Children
         if len(self.class_subclasses) != 0:
-            txt += '####  Children: \n'
+            txt += '###  Children: \n'
             for obj in self._get_markdown_link(self.class_subclasses):
                 txt += '- {}\n'.format(obj)
 
         # Parent types
         if len(self.class_parent_types) != 0:
-            txt += '####  Parent types: \n'
+            txt += '###  Parent types: \n'
             for obj in self._get_markdown_link(sorted(self.class_parent_types.keys())):
                 txt += '- {}\n'.format(obj)
 
         # Metadata
         if self.class_has_metadata:
-            txt += '#### Metadata\n'
+            txt += '### Metadata\n'
             txt += 'Name | Format\n'
             txt += '---- | ------\n'
             txt += 'annotations | {}\n'.format(Map(String, String).name())
@@ -159,7 +159,7 @@ class KubeHelper(object):
         if len(self.class_types.keys()) == 0:
             return txt
 
-        txt += '####  Properties:\n\n'
+        txt += '###  Properties:\n\n'
         txt += 'Name | Type | Identifier | Type Transformation | Aliases\n'
         txt += '---- | ---- | ---------- | ------------------- | -------\n'
         if self.class_identifier is not None:

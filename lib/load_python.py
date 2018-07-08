@@ -15,7 +15,7 @@ import loader
 
 import kube_yaml
 from load_python_core import do_compile_internal
-from kube_obj import KubeObj, KubeBaseObj
+from kube_obj import KubeObj, KubeBaseObj, KubeType
 from obj_registry import obj_registry, get_ns
 from user_error import UserError, user_originated, handle_user_error
 from output import RubiksOutputError, OutputCollection
@@ -23,6 +23,7 @@ from lookup import Resolver
 from util import mkdir_p
 
 import kube_objs
+import kube_types
 import kube_vartypes
 
 
@@ -209,6 +210,7 @@ class PythonFileCollection(loader.Loader):
 class PythonBaseFile(object):
     _kube_objs = None
     _kube_vartypes = None
+    _kube_type = None
     compile_in_init = True
     default_export_objects = False
     can_cluster_context = True
@@ -241,6 +243,21 @@ class PythonBaseFile(object):
                     except:
                         pass
         return cls._kube_vartypes
+
+    @classmethod
+    def get_kube_types(cls):
+        if cls._kube_type is None:
+            cls._kube_type = {}
+
+            for k in kube_types.__dict__:
+                if isinstance(kube_types.__dict__[k], type) and k not in ('KubeType'):
+                    try:
+                        if isinstance(kube_objs.__dict__[k](), KubeType):
+                            cls._kube_type[k] = kube_types.__dict__[k]
+                    except:
+                        pass
+
+        return cls._kube_type
 
     def __init__(self, collection, path):
         if path.basename == '' or path.basename.lower().strip('0123456789abcdefghijklmnopqrstuvwxyz_') != '':
@@ -502,6 +519,7 @@ class PythonBaseFile(object):
 
         ret.update(self.__class__.get_kube_objs())
         ret.update(self.__class__.get_kube_vartypes())
+        ret.update(self.__class__.get_kube_types())
 
         self.reserved_names = tuple(ret.keys())
 
