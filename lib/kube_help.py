@@ -191,7 +191,7 @@ class KubeHelper(object):
                 elif isinstance(original_type, dict):
                     original_type = original_type['value']
                 classname = original_type.__name__
-                display_type = display_type.replace(classname, self._get_markdown_link(classname))
+                # display_type = display_type.replace(classname, self._get_markdown_link(classname))
             # display_type = self._decorate_obj_links(display=display_type, links=links)
             
             
