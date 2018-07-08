@@ -169,7 +169,7 @@ class KubeHelper(object):
         txt += 'Name | Type | Identifier | Type Transformation | Aliases\n'
         txt += '---- | ---- | ---------- | ------------------- | -------\n'
         if self.class_identifier is not None:
-            txt += '{} | {} | True | - | - \n'.format(self.class_identifier, self.class_types[self.class_identifier].name())
+            txt += '{} | {} | True | - | - \n'.format(self.class_identifier, self._get_markdown_link(self.class_types[self.class_identifier].name()))
             
         for p in sorted(self.class_types.keys()):
             if p == self.class_identifier:
@@ -191,8 +191,8 @@ class KubeHelper(object):
                 elif isinstance(original_type, dict):
                     original_type = original_type['value']
                 classname = original_type.__name__
-                display_type = self._decorate_obj_links(display=display_type, links=(links + [classname]))
-                # display_type = display_type.replace(classname, self._get_markdown_link(classname))
+                display_type = display_type.replace(classname, self._get_markdown_link(classname))
+            display_type = self._decorate_obj_links(display=display_type, links=links)
             
             
             txt += '{} | {} | False | {} | {} \n'.format(p, display_type, xf_data, is_mapped)
