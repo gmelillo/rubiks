@@ -136,7 +136,7 @@ class Enum(KubeType):
     """
     Enum, short for "enumerated," is a data type that consists of predefined values. A constant or variable defined as an enum can store one of the values listed in the enum declaration.
 
-    **Example***
+    **Example**
 
     `Enum('Value1', 'Value2', 'Value3')`
     """
