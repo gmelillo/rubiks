@@ -26,7 +26,6 @@ class Command_docgen(Command, CommandRepositoryBase):
         formats = load_python.PythonBaseFile.get_kube_vartypes()
 
         additional_links = types.keys() + formats.keys()
-        print(additional_links)
         
         r = self.get_repository()
 

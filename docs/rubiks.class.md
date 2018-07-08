@@ -283,8 +283,8 @@ volumeID | AWSVolID | False | - | -
 ### Metadata
 Name | Format
 ---- | ------
-annotations | Map<String, String>
-labels | Map<String, String>
+annotations | Map<[String](#string), [String](#string)>
+labels | Map<[String](#string), [String](#string)>
 ###  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
@@ -311,8 +311,8 @@ sessionAffinity | Nullable&lt;Enum('ClientIP', 'None')&gt; | False | - | -
 ### Metadata
 Name | Format
 ---- | ------
-annotations | Map<String, String>
-labels | Map<String, String>
+annotations | Map<[String](#string), [String](#string)>
+labels | Map<[String](#string), [String](#string)>
 ###  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
@@ -328,8 +328,8 @@ sessionAffinity | Nullable&lt;Enum('ClientIP', 'None')&gt; | False | - | -
 ### Metadata
 Name | Format
 ---- | ------
-annotations | Map<String, String>
-labels | Map<String, String>
+annotations | Map<[String](#string), [String](#string)>
+labels | Map<[String](#string), [String](#string)>
 ###  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
@@ -343,8 +343,8 @@ rules | NonEmpty&lt;List&lt;[PolicyRule](#policyrule)&gt;&gt; | False | - | -
 ### Metadata
 Name | Format
 ---- | ------
-annotations | Map<String, String>
-labels | Map<String, String>
+annotations | Map<[String](#string), [String](#string)>
+labels | Map<[String](#string), [String](#string)>
 ###  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
@@ -356,8 +356,8 @@ subjects | NonEmpty&lt;List&lt;[RoleSubject](#rolesubject)&gt;&gt; | False | &lt
 ### Metadata
 Name | Format
 ---- | ------
-annotations | Map<String, String>
-labels | Map<String, String>
+annotations | Map<[String](#string), [String](#string)>
+labels | Map<[String](#string), [String](#string)>
 ###  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
@@ -727,8 +727,8 @@ toUid | Nullable&lt;String&gt; | False | - | -
 ### Metadata
 Name | Format
 ---- | ------
-annotations | Map<String, String>
-labels | Map<String, String>
+annotations | Map<[String](#string), [String](#string)>
+labels | Map<[String](#string), [String](#string)>
 ###  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
@@ -747,8 +747,8 @@ You can define Deployments to create new ReplicaSets, or to remove existing Depl
 ### Metadata
 Name | Format
 ---- | ------
-annotations | Map<String, String>
-labels | Map<String, String>
+annotations | Map<[String](#string), [String](#string)>
+labels | Map<[String](#string), [String](#string)>
 ###  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
@@ -766,8 +766,8 @@ strategy | Nullable&lt;[DplBaseUpdateStrategy](#dplbaseupdatestrategy)&gt; | Fal
 ### Metadata
 Name | Format
 ---- | ------
-annotations | Map<String, String>
-labels | Map<String, String>
+annotations | Map<[String](#string), [String](#string)>
+labels | Map<[String](#string), [String](#string)>
 ###  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
@@ -788,8 +788,8 @@ triggers | List&lt;[DCTrigger](#dctrigger)&gt; | False | - | -
 ### Metadata
 Name | Format
 ---- | ------
-annotations | Map<String, String>
-labels | Map<String, String>
+annotations | Map<[String](#string), [String](#string)>
+labels | Map<[String](#string), [String](#string)>
 ###  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
@@ -824,8 +824,8 @@ maxUnavailable | SurgeSpec | False | - | -
 ### Metadata
 Name | Format
 ---- | ------
-annotations | Map<String, String>
-labels | Map<String, String>
+annotations | Map<[String](#string), [String](#string)>
+labels | Map<[String](#string), [String](#string)>
 ###  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
@@ -836,8 +836,8 @@ users | NonEmpty&lt;List&lt;UserIdentifier&gt;&gt; | False | - | -
 ### Metadata
 Name | Format
 ---- | ------
-annotations | Map<String, String>
-labels | Map<String, String>
+annotations | Map<[String](#string), [String](#string)>
+labels | Map<[String](#string), [String](#string)>
 ###  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
@@ -928,8 +928,8 @@ matchLabels | Map&lt;String, String&gt; | False | - | -
 ### Metadata
 Name | Format
 ---- | ------
-annotations | Map<String, String>
-labels | Map<String, String>
+annotations | Map<[String](#string), [String](#string)>
+labels | Map<[String](#string), [String](#string)>
 ###  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
@@ -939,8 +939,8 @@ name | Identifier | True | - | -
 ### Metadata
 Name | Format
 ---- | ------
-annotations | Map<String, String>
-labels | Map<String, String>
+annotations | Map<[String](#string), [String](#string)>
+labels | Map<[String](#string), [String](#string)>
 ###  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
@@ -955,8 +955,8 @@ persistentVolumeReclaimPolicy | Nullable&lt;Enum('Retain', 'Recycle', 'Delete')&
 ### Metadata
 Name | Format
 ---- | ------
-annotations | Map<String, String>
-labels | Map<String, String>
+annotations | Map<[String](#string), [String](#string)>
+labels | Map<[String](#string), [String](#string)>
 ###  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
@@ -995,8 +995,8 @@ name | Identifier | False | - | -
 ### Metadata
 Name | Format
 ---- | ------
-annotations | Map<String, String>
-labels | Map<String, String>
+annotations | Map<[String](#string), [String](#string)>
+labels | Map<[String](#string), [String](#string)>
 ###  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
@@ -1107,8 +1107,8 @@ secret_name | Identifier | False | - | -
 ### Metadata
 Name | Format
 ---- | ------
-annotations | Map<String, String>
-labels | Map<String, String>
+annotations | Map<[String](#string), [String](#string)>
+labels | Map<[String](#string), [String](#string)>
 ###  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
@@ -1150,8 +1150,8 @@ verbs | NonEmpty&lt;List&lt;Enum('get', 'list', 'create', 'update', 'delete', 'd
 ### Metadata
 Name | Format
 ---- | ------
-annotations | Map<String, String>
-labels | Map<String, String>
+annotations | Map<[String](#string), [String](#string)>
+labels | Map<[String](#string), [String](#string)>
 ###  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
@@ -1161,8 +1161,8 @@ name | Identifier | True | - | -
 ### Metadata
 Name | Format
 ---- | ------
-annotations | Map<String, String>
-labels | Map<String, String>
+annotations | Map<[String](#string), [String](#string)>
+labels | Map<[String](#string), [String](#string)>
 ###  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
@@ -1178,8 +1178,8 @@ selector | Nullable&lt;Map&lt;String, String&gt;&gt; | False | - | -
 ### Metadata
 Name | Format
 ---- | ------
-annotations | Map<String, String>
-labels | Map<String, String>
+annotations | Map<[String](#string), [String](#string)>
+labels | Map<[String](#string), [String](#string)>
 ###  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
@@ -1193,8 +1193,8 @@ rules | NonEmpty&lt;List&lt;[PolicyRule](#policyrule)&gt;&gt; | False | - | -
 ### Metadata
 Name | Format
 ---- | ------
-annotations | Map<String, String>
-labels | Map<String, String>
+annotations | Map<[String](#string), [String](#string)>
+labels | Map<[String](#string), [String](#string)>
 ###  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
@@ -1231,8 +1231,8 @@ ns | Nullable&lt;Identifier&gt; | False | - | -
 ### Metadata
 Name | Format
 ---- | ------
-annotations | Map<String, String>
-labels | Map<String, String>
+annotations | Map<[String](#string), [String](#string)>
+labels | Map<[String](#string), [String](#string)>
 ###  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
@@ -1351,8 +1351,8 @@ user | Nullable&lt;String&gt; | False | - | -
 ### Metadata
 Name | Format
 ---- | ------
-annotations | Map<String, String>
-labels | Map<String, String>
+annotations | Map<[String](#string), [String](#string)>
+labels | Map<[String](#string), [String](#string)>
 ###  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
@@ -1377,8 +1377,8 @@ supplementalGroups | Nullable&lt;List&lt;Integer&gt;&gt; | False | - | -
 ### Metadata
 Name | Format
 ---- | ------
-annotations | Map<String, String>
-labels | Map<String, String>
+annotations | Map<[String](#string), [String](#string)>
+labels | Map<[String](#string), [String](#string)>
 ###  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
@@ -1410,8 +1410,8 @@ volumes | List&lt;Enum('configMap', 'downwardAPI', 'emptyDir', 'hostPath', 'nfs'
 ### Metadata
 Name | Format
 ---- | ------
-annotations | Map<String, String>
-labels | Map<String, String>
+annotations | Map<[String](#string), [String](#string)>
+labels | Map<[String](#string), [String](#string)>
 ###  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
@@ -1424,8 +1424,8 @@ sessionAffinity | Nullable&lt;Enum('ClientIP', 'None')&gt; | False | - | -
 ### Metadata
 Name | Format
 ---- | ------
-annotations | Map<String, String>
-labels | Map<String, String>
+annotations | Map<[String](#string), [String](#string)>
+labels | Map<[String](#string), [String](#string)>
 ###  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
@@ -1450,8 +1450,8 @@ targetPort | OneOf&lt;Positive&lt;NonZero&lt;Integer&gt;&gt;, Identifier&gt; | F
 ### Metadata
 Name | Format
 ---- | ------
-annotations | Map<String, String>
-labels | Map<String, String>
+annotations | Map<[String](#string), [String](#string)>
+labels | Map<[String](#string), [String](#string)>
 ###  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
@@ -1465,8 +1465,8 @@ provisioner | String | False | - | -
 ### Metadata
 Name | Format
 ---- | ------
-annotations | Map<String, String>
-labels | Map<String, String>
+annotations | Map<[String](#string), [String](#string)>
+labels | Map<[String](#string), [String](#string)>
 ###  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases
@@ -1480,8 +1480,8 @@ type | NonEmpty&lt;String&gt; | False | - | -
 ### Metadata
 Name | Format
 ---- | ------
-annotations | Map<String, String>
-labels | Map<String, String>
+annotations | Map<[String](#string), [String](#string)>
+labels | Map<[String](#string), [String](#string)>
 ###  Properties:
 
 Name | Type | Identifier | Type Transformation | Aliases

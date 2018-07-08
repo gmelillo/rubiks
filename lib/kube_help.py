@@ -119,10 +119,8 @@ class KubeHelper(object):
         return '\n'.join([line.strip() for line in self.class_doc.split('\n')])
 
     def _decorate_obj_links(self, display, links):
-        print(display)
         for link in links:
             display = display.replace(link, self._get_markdown_link(link))
-        print(display)
 
         return display
 
@@ -160,8 +158,8 @@ class KubeHelper(object):
             txt += '### Metadata\n'
             txt += 'Name | Format\n'
             txt += '---- | ------\n'
-            txt += 'annotations | {}\n'.format(Map(String, String).name())
-            txt += 'labels | {}\n'.format(Map(String, String).name())
+            txt += 'annotations | {}\n'.format(self._decorate_obj_links(Map(String, String).name(), links))
+            txt += 'labels | {}\n'.format(self._decorate_obj_links(Map(String, String).name(), links))
 
         # Properties table
         if len(self.class_types.keys()) == 0:
@@ -180,6 +178,7 @@ class KubeHelper(object):
             # Prepare Type transformation and remove special character that could ruin visualization in markdown
             xf_data = self.class_xf_detail[p] if p in self.class_xf_detail else '-'
             xf_data = xf_data.replace('<', '&lt;').replace('>', '&gt;')
+            xf_data = self._decorate_obj_links(display=xf_data, links=links)
 
             is_mapped = ', '.join(self._get_markdown_link(self.class_mapping[p])) if p in self.class_mapping else '-'
 
