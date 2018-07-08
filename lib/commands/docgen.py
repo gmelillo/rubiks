@@ -35,14 +35,14 @@ class Command_docgen(Command, CommandRepositoryBase):
 
         header += '- [Formats](#formats)\n'
         md += '\n# Formats\n\n'
-        for fname in formats.keys():
+        for fname in sorted(formats.keys()):
             header += '  - [{}](#{})\n'.format(fname, fname.lower())
             md += '## {}\n\n'.format(fname)
             md += '{}\n\n'.format(formats[fname].get_description())
 
         header += '- [Types](#types)\n'
         md += '\n# Types\n\n'
-        for tname in types.keys():
+        for tname in sorted(types.keys()):
             header += '  - [{}](#{})\n'.format(tname, tname.lower())
             md += '## {}\n\n'.format(tname)
             md += '{}\n\n'.format(types[tname].get_description())
@@ -50,7 +50,7 @@ class Command_docgen(Command, CommandRepositoryBase):
 
         header += '- [Objects](#objects)\n'
         md += '\n# Objects\n\n'
-        for oname in objs.keys():
+        for oname in sorted(objs.keys()):
             header += '  - [{}](#{})\n'.format(oname, oname.lower())
             md += objs[oname].get_help().render_markdown()
 
