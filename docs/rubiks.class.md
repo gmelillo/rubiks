@@ -1445,7 +1445,7 @@ Name | Type | Identifier | Type Transformation | Aliases
 name | [Nullable](#nullable)&lt;[Identifier](#identifier)&gt; | False | - | - 
 port | [Positive](#positive)&lt;[NonZero](#nonzero)&lt;[Integer](#integer)&gt;&gt; | False | - | - 
 protocol | [Enum](#enum)('TCP', 'UDP') | False | - | - 
-targetPort | [OneOf](#&lt;built-in method lower of str object at 0x109273b10&gt;)&lt;[Positive](#positive)&lt;[NonZero](#nonzero)&lt;[Integer](#integer)&gt;&gt;, [Identifier](#identifier)&gt; | False | - | - 
+targetPort | [OneOf](#oneof)&lt;[Positive](#positive)&lt;[NonZero](#nonzero)&lt;[Integer](#integer)&gt;&gt;, [Identifier](#identifier)&gt; | False | - | - 
 ## StorageClass
 ### Metadata
 Name | Format

@@ -454,7 +454,7 @@ class OneOf(KubeType):
 
     def name(self, md=False):
         if md:
-            return '[{}](#{})<{}>'.format(self.__class__.__name__, self.__class__.__name__.lower, ', '.join(map(lambda x: x.name(md=True), self.types)))
+            return '[{}](#{})<{}>'.format(self.__class__.__name__, self.__class__.__name__.lower(), ', '.join(map(lambda x: x.name(md=True), self.types)))
         return self.__class__.__name__ + '<' + ', '.join(map(lambda x: x.name(), self.types)) + '>'
 
     def original_type(self):
