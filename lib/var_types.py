@@ -118,3 +118,9 @@ class VarEntity(object):
         if self.renderer is None:
             return self._internal_render()
         return self.renderer(self._internal_render())
+
+    @classmethod
+    def get_description(cls):
+        if cls.__doc__ is not None and cls.__doc__ is not '':
+            return '\n'.join([line.strip() for line in cls.__doc__.split('\n')])
+        return 'TODO: Description is still missing from the class docstring.\nStay tuned to have more hint about this variable.'

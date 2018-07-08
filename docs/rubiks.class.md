@@ -5,6 +5,12 @@ This document is automatically generated using the command `docgen` and describe
 
 # Table of contents
 
+- [Formats](#formats)
+  - [YAML](#yaml)
+  - [JSON](#json)
+  - [Base64](#base64)
+  - [Command](#command)
+  - [Confidential](#confidential)
 - [Types](#types)
   - [ColonIdentifier](#colonidentifier)
   - [Domain](#domain)
@@ -114,6 +120,34 @@ This document is automatically generated using the command `docgen` and describe
   - [PolicyRule](#policyrule)
   - [ContainerEnvContainerResourceSpec](#containerenvcontainerresourcespec)
   - [PodVolumeSecretSpec](#podvolumesecretspec)
+
+# Formats
+
+## YAML
+
+TODO: Description is still missing from the class docstring.
+Stay tuned to have more hint about this variable.
+
+## JSON
+
+TODO: Description is still missing from the class docstring.
+Stay tuned to have more hint about this variable.
+
+## Base64
+
+TODO: Description is still missing from the class docstring.
+Stay tuned to have more hint about this variable.
+
+## Command
+
+TODO: Description is still missing from the class docstring.
+Stay tuned to have more hint about this variable.
+
+## Confidential
+
+TODO: Description is still missing from the class docstring.
+Stay tuned to have more hint about this variable.
+
 
 # Types
 

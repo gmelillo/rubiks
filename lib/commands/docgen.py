@@ -23,6 +23,7 @@ class Command_docgen(Command, CommandRepositoryBase):
     def run(self, args):
         objs = load_python.PythonBaseFile.get_kube_objs()
         types = load_python.PythonBaseFile.get_kube_types()
+        formats = load_python.PythonBaseFile.get_kube_vartypes()
         
         r = self.get_repository()
 
@@ -31,6 +32,13 @@ class Command_docgen(Command, CommandRepositoryBase):
         md = ''
         header = '# Rubiks Object Index\n{}\n\n'.format(doc)
         header += '# Table of contents\n\n'
+
+        header += '- [Formats](#formats)\n'
+        md += '\n# Formats\n\n'
+        for fname in formats.keys():
+            header += '  - [{}](#{})\n'.format(fname, fname.lower())
+            md += '## {}\n\n'.format(fname)
+            md += '{}\n\n'.format(formats[fname].get_description())
 
         header += '- [Types](#types)\n'
         md += '\n# Types\n\n'
