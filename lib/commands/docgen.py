@@ -30,7 +30,8 @@ class Command_docgen(Command, CommandRepositoryBase):
         doc = '\n'.join([line.strip() for line in self._description.split('\n')])
 
         md = ''
-        header = '# Rubiks Object Index\n{}\n\n'.format(doc)
+        header = '<p align="center"><img src="logos/rubiks-logo-horizontal.png" title="Rubiks Logo"></p>'
+        header += '# Rubiks Object Index\n{}\n\n'.format(doc)
         header += '# Table of contents\n\n'
 
         header += '- [Formats](#formats)\n'
