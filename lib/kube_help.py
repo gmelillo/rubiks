@@ -124,7 +124,7 @@ class KubeHelper(object):
 
         return display
 
-    def render_markdown(self, links=[]):
+    def render_markdown(self):
         # Title generation based on link
         if self.class_doc_link is not None:
             txt = '## [{}]({})\n'.format(self.class_name, self.class_doc_link)
@@ -178,7 +178,6 @@ class KubeHelper(object):
             # Prepare Type transformation and remove special character that could ruin visualization in markdown
             xf_data = self.class_xf_detail[p] if p in self.class_xf_detail else '-'
             xf_data = xf_data.replace('<', '&lt;').replace('>', '&gt;')
-            # xf_data = self._decorate_obj_links(display=xf_data, links=links)
 
             is_mapped = ', '.join(self._get_markdown_link(self.class_mapping[p])) if p in self.class_mapping else '-'
 
@@ -190,9 +189,6 @@ class KubeHelper(object):
                     original_type = original_type[0]
                 elif isinstance(original_type, dict):
                     original_type = original_type['value']
-                classname = original_type.__name__
-                # display_type = display_type.replace(classname, self._get_markdown_link(classname))
-            # display_type = self._decorate_obj_links(display=display_type, links=links)
             
             
             txt += '{} | {} | False | {} | {} \n'.format(p, display_type, xf_data, is_mapped)
