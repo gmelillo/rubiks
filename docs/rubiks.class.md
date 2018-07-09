@@ -4,6 +4,8 @@
 
 This document is automatically generated using the command `docgen` and describe all the object and types that can be used inside Rubiks to configure your cluster
 
+It is possible to generate this documentation locally running inside your rubiks repo `rubiks docgen`.
+
 
 # Table of contents
 
