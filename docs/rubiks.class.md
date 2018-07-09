@@ -135,28 +135,33 @@ It is possible to generate this documentation locally running inside your rubiks
 
 ## Base64
 
-TODO: Description is still missing from the class docstring.
-Stay tuned to have more hint about this variable.
+
+It is representing a [base64](https://en.wikipedia.org/wiki/Base64) encoded strign
+
 
 ## Command
 
-TODO: Description is still missing from the class docstring.
-Stay tuned to have more hint about this variable.
+
+It is representing a docker command to be executed by kubernetes in the process of spinning up a new Pod
+
 
 ## Confidential
 
-TODO: Description is still missing from the class docstring.
-Stay tuned to have more hint about this variable.
+
+It is representing a confidential/secret string that needs to not be displayed publicly
+
 
 ## JSON
 
-TODO: Description is still missing from the class docstring.
-Stay tuned to have more hint about this variable.
+
+It is representing a [JSON](https://en.wikipedia.org/wiki/JSON) object
+
 
 ## YAML
 
-TODO: Description is still missing from the class docstring.
-Stay tuned to have more hint about this variable.
+
+It is representing a [YAML](https://en.wikipedia.org/wiki/YAML) object
+
 
 
 # Types

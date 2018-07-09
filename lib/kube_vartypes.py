@@ -17,6 +17,9 @@ import var_types
 
 
 class Base64(var_types.VarEntity):
+    """
+    It is representing a [base64](https://en.wikipedia.org/wiki/Base64) encoded strign
+    """
     def init(self, value):
         self.value = value
 
@@ -32,6 +35,9 @@ class Base64(var_types.VarEntity):
 
 
 class JSON(var_types.VarEntity):
+    """
+    It is representing a [JSON](https://en.wikipedia.org/wiki/JSON) object
+    """
     def init(self, value):
         self.value = value
         self.args = {'indent': None, 'separators': (',',':')}
@@ -48,6 +54,9 @@ class JSON(var_types.VarEntity):
 
 
 class YAML(var_types.VarEntity):
+    """
+    It is representing a [YAML](https://en.wikipedia.org/wiki/YAML) object
+    """
     def init(self, value):
         self.value = value
 
@@ -59,6 +68,9 @@ class YAML(var_types.VarEntity):
 
 
 class Confidential(var_types.VarEntity):
+    """
+    It is representing a confidential/secret string that needs to not be displayed publicly
+    """
     def init(self, value):
         self.value = value
 
@@ -78,6 +90,9 @@ class CommandRuntimeException(Exception):
 
 
 class Command(var_types.VarEntity):
+    """
+    It is representing a docker command to be executed by kubernetes in the process of spinning up a new Pod
+    """
     def init(self, cmd, cwd=None, env_clear=False, env=None, good_rc=None, rstrip=False, eol=False):
         self.cmd = cmd
         self.cwd = cwd
