@@ -217,6 +217,9 @@ class NonZero(KubeType):
 
 
 class String(KubeType):
+    """
+    String is any finite sequence of characters (i.e., letters, numerals, symbols and punctuation marks).
+    """
     validation_text = "Expected string"
 
     def do_check(self, value, path):
@@ -226,6 +229,9 @@ class String(KubeType):
 
 
 class SurgeSpec(KubeType):
+    """
+    SurgeSpec is expection surge/unavailable type ie integer or percent
+    """
     validation_text = "Expected surge/unavailable type ie integer or percent"
 
     def do_check(self, value, path):
@@ -262,6 +268,13 @@ class SurgeCheck(object):
 
 
 class IPv4(String):
+    """
+    Internet Protocol Version 4 (IPv4) is the fourth revision of the Internet Protocol and a widely used protocol in data communication over different kinds of networks. 
+    
+    IPv4 is a connectionless protocol used in packet-switched layer networks, such as Ethernet.
+    
+    More documentation can be found on [that URL](https://en.wikipedia.org/wiki/IPv6)
+    """
     validation_text = "Expected an IPv4 address"
 
     def do_check(self, value, path):
@@ -285,7 +298,43 @@ class IPv4(String):
         return True
 
 
+class IPv6(String):
+    """
+    Internet Protocol Version 6 (IPv6) is an Internet Protocol (IP) used for carrying data in packets from a source to a destination over various networks. 
+    
+    IPv6 is the enhanced version of IPv4 and can support very large numbers of nodes as compared to IPv4. 
+    
+    It allows for 2128 possible node, or address, combinations.
+
+    More documentation can be found on [that URL](https://en.wikipedia.org/wiki/IPv6)
+
+    **NOTE:** This function is experimental please report any issue with that.
+    """
+    validation_text = "Expected an IPv6 address"
+    def do_check(self, value, path):
+        # Needs to be a string in first place
+        if not String.do_check(self, value, path):
+            return False
+        
+        valid_characters = 'ABCDEFabcdef:0123456789'
+        is_valid = all(current in valid_characters for current in value)
+        address_list = value.split(':')
+        valid_segment = all(len(current) <= 4 for current in address_list)
+
+        if is_valid and valid_segment and len(address_list) == 8:
+            return True
+        else:
+            return False
+
+
 class IP(String):
+    """
+    An Internet Protocol address (IP address) is a numerical label assigned to each device connected to a computer network that uses the Internet Protocol for communication.
+    
+    An IP address serves two principal functions: host or network interface identification and location addressing.
+
+    Valid IP could be either IPv4 ~~or IPv6~~
+    """
     validation_text = "Expected an IP address"
 
     def do_check(self, value, path):
@@ -293,6 +342,23 @@ class IP(String):
 
 
 class Domain(String):
+    """
+    The definitive descriptions of the rules for forming domain names appear in [RFC 1035](https://tools.ietf.org/html/rfc1035), [RFC 1123](https://tools.ietf.org/html/rfc1123), and [RFC 2181](https://tools.ietf.org/html/rfc2181). A domain name consists of one or more parts, technically called labels, that are conventionally concatenated, and delimited by dots, such as `example.com`.
+
+    The right-most label conveys the top-level domain; for example, the domain name `www.example.com` belongs to the top-level domain `com`.
+
+    The hierarchy of domains descends from right to left; each label to the left specifies a subdivision, or subdomain of the domain to the right. For example, the label example specifies a subdomain of the com domain, and www is a subdomain of example.com. 
+    This tree of subdivisions may have up to 127 levels.
+
+    A label may contain zero to 63 characters. The null label, of length zero, is reserved for the root zone. 
+    The full domain name may not exceed the length of 253 characters in its textual representation.In the internal binary representation of the DNS the maximum length requires 255 octets of storage, as it also stores the length of the name.
+
+    Although no technical limitation exists to use any character in domain name labels which are representable by an octet, hostnames use a preferred format and character set. 
+    The characters allowed in labels are a subset of the ASCII character set, consisting of characters a through z, A through Z, digits 0 through 9, and hyphen. 
+    This rule is known as the LDH rule (letters, digits, hyphen). 
+    Domain names are interpreted in case-independent manner. 
+    Labels may not start or end with a hyphen. An additional rule requires that top-level domain names should not be all-numeric.[20]
+    """
     validation_text = "Expected a domain name"
 
     def do_check(self, value, path):
@@ -317,6 +383,9 @@ class Domain(String):
 
 
 class Identifier(String):
+    """
+    An Identifier should be shorter than 253 chars and lc alphanum or . or -
+    """
     validation_text = "Identifiers should be <253 chars and lc alphanum or . or -"
 
     def do_check(self, value, path):
@@ -332,6 +401,9 @@ class Identifier(String):
 
 
 class CaseIdentifier(Identifier):
+    """
+    An Identifier should be shorten thsn 253 chars and alphanum or . or -
+    """
     validation_text = "Identifiers should be <253 chars and alphanum or . or -"
 
     def do_check(self, value, path):
@@ -347,6 +419,9 @@ class CaseIdentifier(Identifier):
 
 
 class SystemIdentifier(Identifier):
+    """
+    An Identifier should be  shorten than 253 chars and lc alphanum or . or - or :
+    """
     validation_text = "Identifiers should be <253 chars and lc alphanum or . or - or :"
 
     def do_check(self, value, path):
@@ -367,6 +442,9 @@ class SystemIdentifier(Identifier):
 
 
 class ColonIdentifier(Identifier):
+    """
+    An Identifier should be  shorten than 253 chars and lc alphanum or . or - or :
+    """
     validation_text = "Identifiers should be <253 chars and lc alphanum or . or - and a :"
 
     def do_check(self, value, path):
@@ -430,6 +508,15 @@ class ARN(String):
 
 
 class Path(String):
+    """
+    A path, the general form of the name of a file or directory, specifies a unique location in a file system. 
+    A path points to a file system location by following the directory tree hierarchy expressed in a string of characters in which path components, separated by a delimiting character, represent each directory. 
+    The delimiting character is most commonly the slash ("/"), the backslash character ("\"), or colon (":"), though some operating systems may use a different delimiter. 
+    Paths are used extensively in computer science to represent the directory/file relationships common in modern operating systems, and are essential in the construction of Uniform Resource Locators (URLs). 
+    Resources can be represented by either absolute or relative paths.
+
+    More info could be fount [here](https://en.wikipedia.org/wiki/Path_(computing))
+    """
     validation_text = "Expecting a fully qualified path"
 
     def do_check(self, value, path):
@@ -439,6 +526,9 @@ class Path(String):
 
 
 class NonEmpty(KubeType):
+    """
+    This wrapper is ensuring that a field could not be left empty but needs to have a valid value.
+    """
     validation_text = "Expecting non-empty"
 
     wrapper = True
@@ -448,6 +538,9 @@ class NonEmpty(KubeType):
 
 
 class OneOf(KubeType):
+    """
+    This wrapper is defininig the possibility for a field to be either multiple types.
+    """
     def __init__(self, *types):
         assert len(types) > 1
         self.types = list(map(self.__class__.construct_arg, types))
@@ -479,6 +572,9 @@ class OneOf(KubeType):
 
 
 class List(KubeType):
+    """
+    This field is enforcing a check to a field to determinate if a list was actually provided as parameter.
+    """
     validation_text = "Expecting list"
 
     wrapper = True

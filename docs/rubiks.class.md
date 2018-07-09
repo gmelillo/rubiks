@@ -24,6 +24,7 @@ It is possible to generate this documentation locally running inside your rubiks
   - [Enum](#enum)
   - [IP](#ip)
   - [IPv4](#ipv4)
+  - [IPv6](#ipv6)
   - [Identifier](#identifier)
   - [Integer](#integer)
   - [List](#list)
@@ -203,18 +204,35 @@ Boolean expressions use the operators AND, OR, XOR, and NOT to compare values an
 
 ## CaseIdentifier
 
-TODO: Description is still missing from the class docstring.
-Stay tuned to have more hint about this variable.
+
+An Identifier should be shorten thsn 253 chars and alphanum or . or -
+
 
 ## ColonIdentifier
 
-TODO: Description is still missing from the class docstring.
-Stay tuned to have more hint about this variable.
+
+An Identifier should be  shorten than 253 chars and lc alphanum or . or - or :
+
 
 ## Domain
 
-TODO: Description is still missing from the class docstring.
-Stay tuned to have more hint about this variable.
+
+The definitive descriptions of the rules for forming domain names appear in [RFC 1035](https://tools.ietf.org/html/rfc1035), [RFC 1123](https://tools.ietf.org/html/rfc1123), and [RFC 2181](https://tools.ietf.org/html/rfc2181). A domain name consists of one or more parts, technically called labels, that are conventionally concatenated, and delimited by dots, such as `example.com`.
+
+The right-most label conveys the top-level domain; for example, the domain name `www.example.com` belongs to the top-level domain `com`.
+
+The hierarchy of domains descends from right to left; each label to the left specifies a subdivision, or subdomain of the domain to the right. For example, the label example specifies a subdomain of the com domain, and www is a subdomain of example.com.
+This tree of subdivisions may have up to 127 levels.
+
+A label may contain zero to 63 characters. The null label, of length zero, is reserved for the root zone.
+The full domain name may not exceed the length of 253 characters in its textual representation.In the internal binary representation of the DNS the maximum length requires 255 octets of storage, as it also stores the length of the name.
+
+Although no technical limitation exists to use any character in domain name labels which are representable by an octet, hostnames use a preferred format and character set.
+The characters allowed in labels are a subset of the ASCII character set, consisting of characters a through z, A through Z, digits 0 through 9, and hyphen.
+This rule is known as the LDH rule (letters, digits, hyphen).
+Domain names are interpreted in case-independent manner.
+Labels may not start or end with a hyphen. An additional rule requires that top-level domain names should not be all-numeric.[20]
+
 
 ## Enum
 
@@ -228,18 +246,43 @@ Enum, short for "enumerated," is a data type that consists of predefined values.
 
 ## IP
 
-TODO: Description is still missing from the class docstring.
-Stay tuned to have more hint about this variable.
+
+An Internet Protocol address (IP address) is a numerical label assigned to each device connected to a computer network that uses the Internet Protocol for communication.
+
+An IP address serves two principal functions: host or network interface identification and location addressing.
+
+Valid IP could be either IPv4 ~~or IPv6~~
+
 
 ## IPv4
 
-TODO: Description is still missing from the class docstring.
-Stay tuned to have more hint about this variable.
+
+Internet Protocol Version 4 (IPv4) is the fourth revision of the Internet Protocol and a widely used protocol in data communication over different kinds of networks.
+
+IPv4 is a connectionless protocol used in packet-switched layer networks, such as Ethernet.
+
+More documentation can be found on [that URL](https://en.wikipedia.org/wiki/IPv6)
+
+
+## IPv6
+
+
+Internet Protocol Version 6 (IPv6) is an Internet Protocol (IP) used for carrying data in packets from a source to a destination over various networks.
+
+IPv6 is the enhanced version of IPv4 and can support very large numbers of nodes as compared to IPv4.
+
+It allows for 2128 possible node, or address, combinations.
+
+More documentation can be found on [that URL](https://en.wikipedia.org/wiki/IPv6)
+
+**NOTE:** This function is experimental please report any issue with that.
+
 
 ## Identifier
 
-TODO: Description is still missing from the class docstring.
-Stay tuned to have more hint about this variable.
+
+An Identifier should be shorter than 253 chars and lc alphanum or . or -
+
 
 ## Integer
 
@@ -250,13 +293,15 @@ Therefore, the numbers 10, 0, -25, and 5,148 are all integers. Unlike floating p
 
 ## List
 
-TODO: Description is still missing from the class docstring.
-Stay tuned to have more hint about this variable.
+
+This field is enforcing a check to a field to determinate if a list was actually provided as parameter.
+
 
 ## NonEmpty
 
-TODO: Description is still missing from the class docstring.
-Stay tuned to have more hint about this variable.
+
+This wrapper is ensuring that a field could not be left empty but needs to have a valid value.
+
 
 ## NonZero
 
@@ -278,8 +323,15 @@ An integer is a whole number (not a fraction) that can be positive, negative, fl
 
 ## Path
 
-TODO: Description is still missing from the class docstring.
-Stay tuned to have more hint about this variable.
+
+A path, the general form of the name of a file or directory, specifies a unique location in a file system.
+A path points to a file system location by following the directory tree hierarchy expressed in a string of characters in which path components, separated by a delimiting character, represent each directory.
+The delimiting character is most commonly the slash ("/"), the backslash character (""), or colon (":"), though some operating systems may use a different delimiter.
+Paths are used extensively in computer science to represent the directory/file relationships common in modern operating systems, and are essential in the construction of Uniform Resource Locators (URLs).
+Resources can be represented by either absolute or relative paths.
+
+More info could be fount [here](https://en.wikipedia.org/wiki/Path_(computing))
+
 
 ## Positive
 
@@ -289,18 +341,21 @@ Define a number that needs to be positive (0 is included as positive)
 
 ## String
 
-TODO: Description is still missing from the class docstring.
-Stay tuned to have more hint about this variable.
+
+String is any finite sequence of characters (i.e., letters, numerals, symbols and punctuation marks).
+
 
 ## SurgeSpec
 
-TODO: Description is still missing from the class docstring.
-Stay tuned to have more hint about this variable.
+
+SurgeSpec is expection surge/unavailable type ie integer or percent
+
 
 ## SystemIdentifier
 
-TODO: Description is still missing from the class docstring.
-Stay tuned to have more hint about this variable.
+
+An Identifier should be  shorten than 253 chars and lc alphanum or . or - or :
+
 
 
 # Objects
