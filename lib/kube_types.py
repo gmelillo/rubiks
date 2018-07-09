@@ -119,6 +119,9 @@ class Object(KubeType):
 
 
 class Nullable(KubeType):
+    """
+    This wrapper if telling to rubiks that the parameter could be some valid value or null(None in python)
+    """
     validation_text = "Expected type or None"
     wrapper = True
 

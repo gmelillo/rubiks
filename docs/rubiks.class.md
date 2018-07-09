@@ -312,8 +312,9 @@ Will be accepted positive and negative of any kind.
 
 ## Nullable
 
-TODO: Description is still missing from the class docstring.
-Stay tuned to have more hint about this variable.
+
+This wrapper if telling to rubiks that the parameter could be some valid value or null(None in python)
+
 
 ## Number
 
