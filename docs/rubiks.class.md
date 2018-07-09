@@ -1,4 +1,5 @@
-<p align="center"><img src="logos/rubiks-logo-horizontal.png" title="Rubiks Logo"></p># Rubiks Object Index
+<p align="center"><img src="logos/rubiks-logo-horizontal.png" title="Rubiks Logo"></p>
+# Rubiks Object Index
 
 This document is automatically generated using the command `docgen` and describe all the object and types that can be used inside Rubiks to configure your cluster
 
