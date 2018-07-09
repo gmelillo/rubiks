@@ -1,4 +1,6 @@
-![Rubiks Logo](docs/logos/rubiks-logo-horizontal.png)
+<p align="center">
+  <img src="docs/logos/rubiks-logo-horizontal.png" title="Rubiks Logo">
+</p>
 
 # Rubiks - a kubernetes yaml file manager
 
@@ -30,3 +32,4 @@ See also `rubiks help` for more information on how to use it
 - [Rubiks repositories and the .rubiks file](docs/Rubiks%20repositories%20and%20the%20.rubiks%20file.md)
 - [Examples](https://github.com/olx-global/rubiks-examples)
 - [Logo Variants](docs/logos/logos.md)
+- [Classes Definitions](docs/rubiks.class.md)
