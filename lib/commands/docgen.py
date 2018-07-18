@@ -12,6 +12,10 @@ import os
 
 class Command_docgen(Command, CommandRepositoryBase):
     """
+    Generate the documentation of all classes supported by rubiks on your local rubiks folder.
+    """
+
+    _documentation = """
     This document is automatically generated using the command `docgen` and describe all the object and types that can be used inside Rubiks to configure your cluster
     
     It is possible to generate this documentation locally running inside your rubiks repo `rubiks docgen`.
@@ -27,7 +31,7 @@ class Command_docgen(Command, CommandRepositoryBase):
         
         r = self.get_repository()
 
-        doc = '\n'.join([line.strip() for line in self.__class__.__doc__.split('\n')])
+        doc = '\n'.join([line.strip() for line in self._documentation.split('\n')])
 
         md = ''
         header = '<p align="center"><img src="logos/rubiks-logo-horizontal.png" title="Rubiks Logo"></p>\n\n'
