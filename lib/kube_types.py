@@ -64,15 +64,12 @@ class KubeType(object):
             return self.wrap.original_type()
         return None
 
-    def name(self, md=False):
+    def name(self, render=None):
+        if render is None:
+            render = lambda x: x
         if self.wrapper:
-            if md:
-                return '[{}](#{})<{}>'.format(self.__class__.__name__, self.__class__.__name__.lower(), self.wrap.name(md=True))
-            else:
-                return '{}<{}>'.format(self.__class__.__name__, self.wrap.name())
-        if md:
-            return '[{}](#{})'.format(self.__class__.__name__, self.__class__.__name__.lower())
-        return self.__class__.__name__
+            return '{}<{}>'.format(render(self.__class__.__name__), self.wrap.name(render=render))
+        return render(self.__class__.__name__)
 
     def check_wrap(self, value, path):
         if self.wrapper:
@@ -103,10 +100,10 @@ class Object(KubeType):
     def original_type(self):
         return self.cls
 
-    def name(self, md=False):
-        if md:
-            return '[{}](#{})'.format(self.cls.__name__, self.cls.__name__.lower())
-        return self.cls.__name__
+    def name(self, render=None):
+        if render is None:
+            render = lambda x: x
+        return render(self.cls.__name__)
 
     def do_check(self, value, path):
         self.validation_text = "Not the right object type"
