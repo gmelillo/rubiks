@@ -33,8 +33,9 @@ test: clean
 	done; \
 	"$${PYTHON}" -m unittest $${modules}
 
-coverage: clean checkdeps
+coverage: clean
 	@PYTHON="$${PYTHON-python}"; export PYTHONPATH=test/test:lib; \
+	$${PYTHON} -c "import coverage" > /dev/null 2>&1; \
 	echo "testing all (with $${PYTHON}) in test/test/test_*.py..."; \
 	for i in test/test/test_*.py; do \
 	  COVERAGE_FILE=.coverage_$${i##*/} "$${PYTHON}" -m coverage run $${i}; \
@@ -42,18 +43,9 @@ coverage: clean checkdeps
 	"$${PYTHON}" -m coverage combine .coverage_*; \
 	"$${PYTHON}" -m coverage report
 
-	${MAKE} clean
-
-checkdeps:
-	@PYTHON="$${PYTHON-python}"; export PYTHONPATH=test/test:lib; \
-	if ! $${PYTHON} -c "import coverage" &> /dev/null; then \
-		echo 'Unable to find coverage module on your python.'; \
-		exit 1; \
-	fi \
-
 clean:
-	@find . -type f -name '*.py[co]' -print0 | xargs -0 rm
-	@find . -type d -name '__pycache__' -print0 | xargs -0 rm -r
-	@find . -type f -name '.coverage' -print0 | xargs -0 rm 
+	@find . -type f -name '*.py[co]' -print0 | xargs -0 rm -f
+	@find . -type d -name '__pycache__' -print0 | xargs -0 rm -rf
+	@find . -type f -name '.coverage' -print0 | xargs -0 rm -f
 
 .PHONY: yaml test clean
