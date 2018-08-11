@@ -1,3 +1,5 @@
+[![codecov](https://codecov.io/gh/olx-global/rubiks/branch/master/graph/badge.svg)](https://codecov.io/gh/olx-global/rubiks) [![Build Status](https://travis-ci.org/olx-global/rubiks.svg?branch=master)](https://travis-ci.org/olx-global/rubiks)
+
 <p align="center">
   <img src="docs/logos/rubiks-logo-horizontal.png" title="Rubiks Logo">
 </p>
