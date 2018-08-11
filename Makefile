@@ -42,8 +42,6 @@ coverage: clean checkdeps
 	"$${PYTHON}" -m coverage combine .coverage_*; \
 	"$${PYTHON}" -m coverage report
 
-	${MAKE} clean
-
 checkdeps:
 	@PYTHON="$${PYTHON-python}"; export PYTHONPATH=test/test:lib; \
 	if ! $${PYTHON} -c "import coverage" &> /dev/null; then \
