@@ -10,7 +10,7 @@ install:
   - pip install codecov coverage
 
 script:
-  - make coverage
+  - make travis
 
 after_success:
   - codecov
