@@ -50,8 +50,8 @@ checkdeps:
 	fi \
 
 clean:
-	@find . -type f -name '*.py[co]' -print0 | xargs -0 rm
-	@find . -type d -name '__pycache__' -print0 | xargs -0 rm -r
-	@find . -type f -name '.coverage' -print0 | xargs -0 rm 
+	@find . -type f -name '*.py[co]' -print0 | xargs -0 rm -f
+	@find . -type d -name '__pycache__' -print0 | xargs -0 rm -rf
+	@find . -type f -name '.coverage' -print0 | xargs -0 rm -f
 
 .PHONY: yaml test clean
