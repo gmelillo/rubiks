@@ -10,6 +10,8 @@ install:
   - pip install coverage
 
 script:
+  - python -c "import coverage"
+  - echo $?
   - make travis
 
 after_success:
