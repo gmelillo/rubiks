@@ -109,5 +109,89 @@ class KubeHelper(object):
 
         return txt
 
+    def _get_markdown_link(self, objects):
+        if isinstance(objects, list):
+            return ['[{}](#{})'.format(classname, classname.lower()) for classname in objects]
+        else:
+            return '[{}](#{})'.format(objects, objects.lower())
+
     def _docstring_formatter(self):
         return '\n'.join([line.strip() for line in self.class_doc.split('\n')])
+
+    def _decorate_obj_links(self, display, links):
+        for link in links:
+            display = display.replace(link, self._get_markdown_link(link))
+
+        return display
+
+    def render_markdown(self):
+        md_render = lambda x: '[{}](#{})'.format(x, x.lower())
+        # Title generation based on link
+        if self.class_doc_link is not None:
+            txt = '## [{}]({})\n'.format(self.class_name, self.class_doc_link)
+        else:
+            txt = '## {}\n'.format(self.class_name)
+
+        # Add class doc string if exists
+        if self.class_doc is not None:
+            txt += '\n{}\n'.format(self._docstring_formatter())
+
+        # Parents
+        if len(self.class_superclasses) != 0:
+            txt += '### Parents: \n'
+            for obj in self._get_markdown_link(self.class_superclasses):
+                txt += '- {}\n'.format(obj)
+
+        # Children
+        if len(self.class_subclasses) != 0:
+            txt += '###  Children: \n'
+            for obj in self._get_markdown_link(self.class_subclasses):
+                txt += '- {}\n'.format(obj)
+
+        # Parent types
+        if len(self.class_parent_types) != 0:
+            txt += '###  Parent types: \n'
+            for obj in self._get_markdown_link(sorted(self.class_parent_types.keys())):
+                txt += '- {}\n'.format(obj)
+
+        # Metadata
+        if self.class_has_metadata:
+            txt += '### Metadata\n'
+            txt += 'Name | Format\n'
+            txt += '---- | ------\n'
+            txt += 'annotations | {}\n'.format(Map(String, String).name(render=md_render))
+            txt += 'labels | {}\n'.format(Map(String, String).name(render=md_render))
+
+        # Properties table
+        if len(self.class_types.keys()) == 0:
+            return txt
+
+        txt += '###  Properties:\n\n'
+        txt += 'Name | Type | Identifier | Type Transformation | Aliases\n'
+        txt += '---- | ---- | ---------- | ------------------- | -------\n'
+        if self.class_identifier is not None:
+            txt += '{} | {} | True | - | - \n'.format(self.class_identifier, self._get_markdown_link(self.class_types[self.class_identifier].name()))
+            
+        for p in sorted(self.class_types.keys()):
+            if p == self.class_identifier:
+                continue
+
+            # Prepare Type transformation and remove special character that could ruin visualization in markdown
+            xf_data = self.class_xf_detail[p] if p in self.class_xf_detail else '-'
+            xf_data = xf_data.replace('<', '&lt;').replace('>', '&gt;')
+
+            is_mapped = ', '.join(self._get_markdown_link(self.class_mapping[p])) if p in self.class_mapping else '-'
+
+            original_type = self.class_types[p].original_type()
+            display_type = self.class_types[p].name(render=md_render).replace('<', '&lt;').replace('>', '&gt;')
+
+            if original_type is not None:
+                if isinstance(original_type, list):
+                    original_type = original_type[0]
+                elif isinstance(original_type, dict):
+                    original_type = original_type['value']
+            
+            
+            txt += '{} | {} | False | {} | {} \n'.format(p, display_type, xf_data, is_mapped)
+
+        return txt
